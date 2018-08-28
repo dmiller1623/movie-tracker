@@ -4,7 +4,7 @@ export default class Login extends Component {
   constructor(){
     super();
     this.state = {
-      userName: '',
+      email: '',
       password: ''
     };
   }
@@ -18,9 +18,9 @@ export default class Login extends Component {
       <div>
         <form>
           <input
-            name='userName'
-            value={this.state.userName}
-            placeholder='User Name'
+            name='email'
+            value={this.state.email}
+            placeholder='email'
             onChange={(event) => this.handleChange(event)}
           />
           <input
