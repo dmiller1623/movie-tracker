@@ -4,6 +4,8 @@ import { Route, NavLink, Link } from 'react-router-dom';
 import getMovies from '../../utilities/apiCalls/apiCalls';
 import { populateMovies } from '../../actions';
 import MovieList from '../../components/MovieList';
+import Login from '../../components/Login';
+
 
 
 import './App.css';
@@ -18,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Login />
         <MovieList movies={this.props.movies} />
       </div>
     );
