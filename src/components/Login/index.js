@@ -14,13 +14,14 @@ export default class Login extends Component {
   }
 
   render() {
+    const { email, password } = this.state;
     return (
       <div>
-        <form>
+        <form onSubmit={(event) => this.props.submitLogin(event, email, password)}>
           <input
             name='email'
             value={this.state.email}
-            placeholder='email'
+            placeholder='email address'
             onChange={(event) => this.handleChange(event)}
           />
           <input

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Login from '../../components/Login';
 import { InitialAccountButtons } from '../../components/InitialAccountButtons';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
-
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(){
     super();
     this.state = {
@@ -12,7 +13,13 @@ export default class NavBar extends Component {
   }
   
   handleLogin = () => {
-    this.setState({ displayedNav: <Login />});
+    this.setState({ displayedNav: <Login submitLogin={this.submitLogin}/>});
+  }
+
+  submitLogin = (event, email, password) => {
+    event.preventDefault();
+    //changed displayed nav to sign-out and view favorites
+    this.props.loginUser(email, password);
   }
   
   render() {
@@ -23,3 +30,9 @@ export default class NavBar extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  loginUser: (email, password) => dispatch(loginUser(email, password))
+});
+
+export default connect(null, mapDispatchToProps)(NavBar);
