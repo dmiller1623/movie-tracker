@@ -8,13 +8,11 @@ export const loginUser = (user) => ({
   user
 });
 
-export const signUpUser = (email, password) => ({
-  type: 'SIGNUP_USER',
-  email,
-  password
+export const signUpUser = (user) => ({
+  type: 'SIGN_UP_USER',
+  user
 });
 
-export const signOutUser = () => {
+export const signOutUser = () => ({
   type: 'SIGN_OUT'
-
-}
+});
