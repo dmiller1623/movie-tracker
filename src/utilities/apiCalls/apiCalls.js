@@ -38,3 +38,28 @@ export const getUser = async (email, password) => {
   
 };
 
+export const addNewUser = async (name, email, password) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/users', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name, 
+        email,
+        password
+      })
+    })
+    if (response.status !== 200) {
+      alert('User already exists, please try another email or login to an account')
+      return {};
+    } else {
+      const results = await response.json();
+      return results.data
+    }  
+  } catch(error) {
+    throw new Error(error.message)
+  }
+};
+

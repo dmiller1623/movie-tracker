@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
-import { getUser } from '../../utilities/apiCalls/apiCalls';
+import { signUpUser } from '../../actions';
+import { addNewUser } from '../../utilities/apiCalls/apiCalls';
 
-
-class Login extends Component {
+class SignUp extends Component {
   constructor(){
     super();
     this.state = {
+      name: '',
       email: '',
       password: ''
     };
@@ -17,23 +17,24 @@ class Login extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  submitLogin = async (event) => {
+  submitSignUp = async (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
-    if (email && password) {
-      const cleanEmail = email.trim().toLowerCase()
-      const user = await getUser(cleanEmail, password);
-      this.props.loginUser(user);
-      this.props.handleSubmit();
-    } else {
-      alert('Please enter both email and password')
-    }
+    const { name, email, password } = this.state;
+    const cleanEmail = email.trim().toLowerCase();
+    const newUser = await addNewUser(name, cleanEmail, password);
+    this.props.signUpUser(newUser);
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={(event) => this.submitLogin(event)}>
+        <form onSubmit={(event) => this.submitSignUp(event)}>
+          <input
+            name='name'
+            value={this.state.name}
+            placeholder='name'
+            onChange={(event) => this.handleChange(event)}
+          />
           <input
             type='email'
             name='email'
@@ -55,7 +56,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: (email, password) => dispatch(loginUser(email, password))
+  signUpUser: (name, email, password) => dispatch(signUpUser(name, email, password))
 });
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(SignUp)
