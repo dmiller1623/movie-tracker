@@ -14,7 +14,6 @@ export const signUpUser = (email, password) => ({
   password
 });
 
-export const signOutUser = () => {
+export const signOutUser = () => ({
   type: 'SIGN_OUT'
-
-}
+});

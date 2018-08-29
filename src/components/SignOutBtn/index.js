@@ -1,8 +1,8 @@
 import React from 'react'
 
-const signOutBtn = ({ logUserOut }) => {
+const signOutBtn = ({ handleSignOut}) => {
   return (
-    <button onClick={logUserOut}>
+    <button onClick={handleSignOut}>
       Sign Out
     </button>
   )
