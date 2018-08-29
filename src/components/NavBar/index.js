@@ -47,7 +47,6 @@ class NavBar extends Component {
       navDisplay = <InitialAccountButtons handleLogin={this.handleLogin}  handleSignUp={this.handleSignUp}/>;
       break;
     }
-    let userBtns;
     
     return (
       <div>
