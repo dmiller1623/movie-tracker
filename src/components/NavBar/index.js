@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '../../containers/Login';
 import { InitialAccountButtons } from '../../components/InitialAccountButtons';
 import { connect } from 'react-redux'
-import SignOutBtn from '../SignOutBtn';
+import UserAccountBtns from '../UserAccountBtns';
 import { signOutUser } from '../../actions';
 
 
@@ -28,7 +28,9 @@ class NavBar extends Component {
       <div>
         {!this.state.userIsLoggingIn && !this.props.user.name && <InitialAccountButtons handleLogin={this.handleLogin} /> }
         {this.state.userIsLoggingIn && <Login handleSubmit={this.handleSubmit} /> }
-        {this.props.user.name && <SignOutBtn handleSignOut={this.props.signOutUser}/>}
+        {this.props.user.name && <UserAccountBtns 
+          name={this.props.user.name}
+          handleSignOut={this.props.signOutUser}/>}
       </div>
     );
   }
