@@ -26,7 +26,7 @@ export const getUser = async (email, password) => {
     })
   })
   if (response.status !== 200) {
-    alert('User does not exist, please try again or sign up for an account')
+    alert('Email and/or password do not match, please try again')
     return {};
   } else {
     const results = await response.json();
