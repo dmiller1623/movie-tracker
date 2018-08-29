@@ -20,10 +20,11 @@ class Login extends Component {
   submitLogin = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    if(email && password) {
-    const cleanEmail = email.trim().toLowerCase()
-    const user = await getUser(cleanEmail, password)
-    this.props.loginUser(user);
+    if (email && password) {
+      const cleanEmail = email.trim().toLowerCase()
+      const user = await getUser(cleanEmail, password);
+      this.props.loginUser(user);
+      this.props.handleSubmit();
     } else {
       alert('Please enter both email and password')
     }

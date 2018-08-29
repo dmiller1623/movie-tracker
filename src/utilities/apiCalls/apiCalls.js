@@ -14,7 +14,8 @@ export const getMovies = async () => {
 };
 
 export const getUser = async (email, password) => {
-  const response = await fetch('http://localhost:3000/api/users', {
+  try {
+    const response = await fetch('http://localhost:3000/api/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -23,8 +24,17 @@ export const getUser = async (email, password) => {
       email,
       password
     })
-  }) 
-  const results = await response.json();
-  return results.data
+  })
+  if (response.status !== 200) {
+    alert('User does not exist, please try again or sign up for an account')
+    return {};
+  } else {
+    const results = await response.json();
+    return results.data
+  }
+  } catch(error) {
+    throw new Error(error.message)
+  }
+  
 };
 

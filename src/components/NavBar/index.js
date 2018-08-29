@@ -18,23 +18,23 @@ class NavBar extends Component {
     this.setState({ userIsLoggingIn: true });
   }
 
-  logUserOut = () => {
-    this.setState({ userIsLoggingIn: true })
+  handleSubmit = () => {
+    this.setState({ userIsLoggingIn: false })
   }
   
   render() {
     return (
       <div>
-        {!this.state.userIsLoggingIn && <InitialAccountButtons handleLogin={this.handleLogin} /> }
-        {this.state.userIsLoggingIn && <Login /> }
-        {this.props.user !== {} && <SignOutBtn />}
+        {!this.state.userIsLoggingIn && !this.props.user.name && <InitialAccountButtons handleLogin={this.handleLogin} /> }
+        {this.state.userIsLoggingIn && <Login handleSubmit={this.handleSubmit} /> }
+        {this.props.user.name && <SignOutBtn />}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  user: state.user;
-}
+const mapStateToProps = state => ({
+  user: state.user
+});
 
 export default connect(mapStateToProps)(NavBar)
