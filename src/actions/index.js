@@ -3,10 +3,9 @@ export const populateMovies = (movies) => ({
   movies
 });
 
-export const loginUser = (email, password) => ({
+export const loginUser = (user) => ({
   type: 'LOGIN_USER',
-  email,
-  password
+  user
 });
 
 export const signUpUser = (email, password) => ({
@@ -14,3 +13,8 @@ export const signUpUser = (email, password) => ({
   email,
   password
 });
+
+export const signOutUser = () => {
+  type: 'SIGN_OUT'
+
+}

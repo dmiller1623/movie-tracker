@@ -4,7 +4,7 @@ import { Route, NavLink, Link } from 'react-router-dom';
 import { getMovies } from '../../utilities/apiCalls/apiCalls';
 import { populateMovies } from '../../actions';
 import MovieList from '../../components/MovieList';
-import NavBar from '../NavBar';
+import NavBar from '../../components/NavBar';
 
 import './App.css';
 

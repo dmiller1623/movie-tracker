@@ -20,11 +20,11 @@ export const getUser = async (email, password) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email: 'tman2272@aol.com',
-      password: 'password'
+      email,
+      password
     })
   }) 
   const results = await response.json();
-    console.log(results)
+  return results.data
 };
 
