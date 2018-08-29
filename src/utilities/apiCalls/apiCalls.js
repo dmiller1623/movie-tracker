@@ -40,8 +40,8 @@ export const getUser = async (email, password) => {
 
 export const addNewUser = async (name, email, password) => {
   try {
-    const response = await fetch('http://localhost:3000/api/users', {
-      method: 'PUT',
+    const response = await fetch('http://localhost:3000/api/users/new', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },

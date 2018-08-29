@@ -35,7 +35,7 @@ class NavBar extends Component {
         {!this.state.userIsLoggingIn && !this.props.user.name && <InitialAccountButtons handleLogin={this.handleLogin}  handleSignUp={this.handleSignUp}/> }
         {this.state.userIsLoggingIn && <Login handleSubmit={this.handleSubmit} /> }
         {this.state.userSigningUp && <SignUp handleSignUp = {this.handleSignUp}/>}
-        {this.props.user.name && <UserAccountBtns 
+        {this.props.user.name || && <UserAccountBtns 
           name={this.props.user.name}
           handleSignOut={this.props.signOutUser}/>}
       </div>
