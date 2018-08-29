@@ -23,6 +23,7 @@ class SignUp extends Component {
     const cleanEmail = email.trim().toLowerCase();
     const newUser = await addNewUser(name, cleanEmail, password);
     this.props.signUpUser(newUser);
+    this.props.handleSubmit();
   }
 
   render() {
@@ -56,7 +57,7 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signUpUser: (name, email, password) => dispatch(signUpUser(name, email, password))
+  signUpUser: (user) => dispatch(signUpUser(user))
 });
 
 export default connect(null, mapDispatchToProps)(SignUp)

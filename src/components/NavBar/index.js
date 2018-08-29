@@ -13,7 +13,7 @@ class NavBar extends Component {
     super();
     this.state = {
       userIsLoggingIn: false,
-      userSigningUp: false
+      userIsSigningUp: false
     };
   }
   
@@ -22,11 +22,11 @@ class NavBar extends Component {
   }
 
   handleSignUp = () => {
-    this.setState({ userSigningUp: true });
+    this.setState({ userIsSigningUp: true });
   }
 
   handleSubmit = () => {
-    this.setState({ userIsLoggingIn: false })
+    this.setState({ userIsLoggingIn: false, userIsSigningUp: false})
   } 
 
   render() {
@@ -34,8 +34,8 @@ class NavBar extends Component {
       <div>
         {!this.state.userIsLoggingIn && !this.props.user.name && <InitialAccountButtons handleLogin={this.handleLogin}  handleSignUp={this.handleSignUp}/> }
         {this.state.userIsLoggingIn && <Login handleSubmit={this.handleSubmit} /> }
-        {this.state.userSigningUp && <SignUp handleSignUp = {this.handleSignUp}/>}
-        {this.props.user.name || && <UserAccountBtns 
+        {this.state.userIsSigningUp && <SignUp handleSubmit={this.handleSubmit} />}
+        {this.props.user.name && <UserAccountBtns 
           name={this.props.user.name}
           handleSignOut={this.props.signOutUser}/>}
       </div>

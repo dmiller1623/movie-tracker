@@ -9,7 +9,7 @@ export const loginUser = (user) => ({
 });
 
 export const signUpUser = (user) => ({
-  type: 'SIGNUP_USER',
+  type: 'SIGN_UP_USER',
   user
 });
 
