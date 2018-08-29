@@ -21,7 +21,8 @@ class SignUp extends Component {
     event.preventDefault();
     const { name, email, password } = this.state;
     const cleanEmail = email.trim().toLowerCase();
-    const newUser = await addNewUser(name, cleanEmail, password);
+    const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+    const newUser = await addNewUser(capitalName, cleanEmail, password);
     this.props.signUpUser(newUser);
     this.props.handleSubmit();
   }
