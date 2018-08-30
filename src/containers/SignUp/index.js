@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { signUpUser } from '../../actions';
 import { addNewUser } from '../../utilities/apiCalls/apiCalls';
 
 class SignUp extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       name: '',
@@ -14,7 +15,8 @@ class SignUp extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value});
+    const { name, value } = event.target;
+    this.setState({[name]: value});
   }
 
   submitSignUp = async (event) => {
@@ -23,32 +25,35 @@ class SignUp extends Component {
     const cleanEmail = email.trim().toLowerCase();
     const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
     const newUser = await addNewUser(capitalName, cleanEmail, password);
+
     this.props.signUpUser(newUser);
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render() {
+    const { email, password, name } = this.state;
+
     return (
       <div>
         <form onSubmit={this.submitSignUp}>
           <input
             name='name'
-            value={this.state.name}
+            value={name}
             placeholder='name'
-            onChange={(event) => this.handleChange(event)}
+            onChange={this.handleChange}
           />
           <input
             type='email'
             name='email'
-            value={this.state.email}
+            value={email}
             placeholder='email'
-            onChange={(event) => this.handleChange(event)}
+            onChange={this.handleChange}
           />
           <input
             name='password'
-            value={this.state.password}
+            value={password}
             placeholder='password'
-            onChange={(event) => this.handleChange(event)}
+            onChange={this.handleChange}
           />
           <button>Submit</button>
         </form>
@@ -57,8 +62,8 @@ class SignUp extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   signUpUser: (user) => dispatch(signUpUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default connect(null, mapDispatchToProps)(SignUp);
