@@ -6,6 +6,10 @@ import { addNewFavorite, deleteFavorite } from '../../utilities/apiCalls/apiCall
 class MovieCard extends Component {
   toggleFavorite = async () => {
     const movie = {...this.props, user_id: this.props.user.id}
+    if (!this.props.user.name) {
+      return alert('To favorite a movie, please login or sign up for a new account.');
+    }
+
     if (this.props.favorites.includes(movie.movie_id)) {
       await deleteFavorite(this.props.user.id, movie.movie_id);
       const updatedFavorites = this.props.favorites.filter( favorite => favorite !== movie.movie_id);
