@@ -28,7 +28,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({
