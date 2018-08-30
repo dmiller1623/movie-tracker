@@ -21,3 +21,8 @@ export const addFavorite = (movie) => ({
   type: 'ADD_FAVORITE',
   movie
 });
+
+export const populateFavorites = (favorites) => ({
+  type: 'POPULATE_FAVORITES',
+  favorites
+});

@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path = '/' render={() => <MovieList movies={this.props.movies} /> } />
+        <Route exact path = '/' render={() => <MovieList movies={this.props.movies} favorites={this.props.favorites} /> } />
         <Route exact path = '/login' component={Login} />
         <Route exact path = '/signup' component={SignUp} />
       </div>
