@@ -16,24 +16,24 @@ export const getMovies = async () => {
 export const getUser = async (email, password) => {
   try {
     const response = await fetch('http://localhost:3000/api/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email,
-      password
-    })
-  })
-  if (response.status !== 200) {
-    alert('Email and/or password do not match, please try again')
-    return {};
-  } else {
-    const results = await response.json();
-    return results.data
-  }
-  } catch(error) {
-    throw new Error(error.message)
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+    if (response.status !== 200) {
+      alert('Email and/or password do not match, please try again');
+      return {};
+    } else {
+      const results = await response.json();
+      return results.data;
+    }
+  } catch (error) {
+    throw new Error(error.message);
   }
   
 };
@@ -50,15 +50,45 @@ export const addNewUser = async (name, email, password) => {
         email,
         password
       })
-    })
+    });
     if (response.status !== 200) {
-      alert('User already exists, please try another email or login to an account')
+      alert('User already exists, please try another email or login to an account');
       return {};
     } else {
       return await getUser(email, password);
     }  
-  } catch(error) {
-    throw new Error(error.message)
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
+
+export const addNewFavorite = async ({
+  movie_id,
+  user_id,
+  title,
+  poster_path,
+  release_date,
+  vote_average,
+  overview}) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/users/favorites/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        movie_id,
+        user_id,
+        title,
+        poster_path,
+        release_date,
+        vote_average,
+        overview
+      })
+    });
+    return response.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 
