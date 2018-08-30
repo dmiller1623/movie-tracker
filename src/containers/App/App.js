@@ -6,6 +6,7 @@ import { populateMovies } from '../../actions';
 import MovieList from '../../components/MovieList';
 import SignUp from '../SignUp';
 import Login from '../Login';
+import FavoritesList from '../../components/FavoritesList';
 
 import './App.css';
 
@@ -19,16 +20,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path = '/' render={() => <MovieList movies={this.props.movies} /> } />
+        <Route exact path = '/' render={() => <MovieList movies={this.props.movies} favorites={this.props.favorites} /> } />
         <Route exact path = '/login' component={Login} />
         <Route exact path = '/signup' component={SignUp} />
+        <Route exact path = '/favorites' render={() => <FavoritesList movies={this.props.movies} favorites={this.props.favorites} />} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({

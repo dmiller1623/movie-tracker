@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
-import { getUser } from '../../utilities/apiCalls/apiCalls';
+import { loginUser, populateFavorites } from '../../actions';
+import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
 import { withRouter } from 'react-router-dom';
 
 
@@ -25,6 +25,8 @@ class Login extends Component {
       const cleanEmail = email.trim().toLowerCase()
       const user = await getUser(cleanEmail, password);
       this.props.loginUser(user);
+      const favorites = await getFavorites(user.id);
+      this.props.populateFavorites(favorites);
       this.props.history.push('/')
     } else {
       alert('Please enter both email and password')
@@ -56,7 +58,8 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: (email, password) => dispatch(loginUser(email, password))
+  loginUser: (email, password) => dispatch(loginUser(email, password)),
+  populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Login))

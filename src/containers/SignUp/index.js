@@ -24,13 +24,13 @@ class SignUp extends Component {
     const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
     const newUser = await addNewUser(capitalName, cleanEmail, password);
     this.props.signUpUser(newUser);
-    this.props.handleSubmit();
+    this.props.history.push('/')
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={(event) => this.submitSignUp(event)}>
+        <form onSubmit={this.submitSignUp}>
           <input
             name='name'
             value={this.state.name}

@@ -38,6 +38,21 @@ export const getUser = async (email, password) => {
   
 };
 
+export const getFavorites = async (userId) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/users/${userId}/favorites`);
+    if (response.status !== 200) {
+      return [];
+    } else {
+      const favorites = await response.json();
+      const favoriteMovieIds = favorites.data.map( favorite => favorite.movie_id );
+      return favoriteMovieIds;
+    }
+  } catch(error) {
+    throw new Error(error.message);
+  }
+};
+
 export const addNewUser = async (name, email, password) => {
   try {
     const response = await fetch('http://localhost:3000/api/users/new', {
@@ -87,6 +102,16 @@ export const addNewFavorite = async ({
       })
     });
     return response.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export const deleteFavorite = async (userId, movieId) => {
+  try {
+    await fetch(`http://localhost:3000/api/users/${userId}/favorites/${movieId}`, {
+      method: 'DELETE'
+    });
   } catch (error) {
     throw new Error(error.message);
   }

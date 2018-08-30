@@ -17,7 +17,12 @@ export const signOutUser = () => ({
   type: 'SIGN_OUT'
 });
 
-export const addFavorite = (movie) => ({
+export const addFavorite = (movieId) => ({
   type: 'ADD_FAVORITE',
-  movie
+  movieId
+});
+
+export const populateFavorites = (favorites) => ({
+  type: 'POPULATE_FAVORITES',
+  favorites
 });
