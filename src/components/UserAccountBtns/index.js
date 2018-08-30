@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const signOutBtn = ({ name, signOutUser}) => {
+const UserAccountBtns = ({ name, signOutUser}) => {
   return (
     <div>
       <h3>Hi, {name}!</h3>
-      <button>
+      <Link to='/favorites'>
         View Favorites
-      </button>
+      </Link>
       <button onClick={() => {
         signOutUser()
       }}>
@@ -16,4 +17,4 @@ const signOutBtn = ({ name, signOutUser}) => {
   )
 }
 
-export default signOutBtn
+export default UserAccountBtns;

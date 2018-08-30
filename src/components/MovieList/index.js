@@ -4,8 +4,7 @@ import NavBar from '../NavBar';
 
 const MovieList = ({ movies, favorites = [] }) => {
   const displayedMovies = movies.map( (movie, index) => {
-    let starColor = favorites.includes(movie.movie_id) ? "#ffd24d" : '#f2f2f2';
-    console.log(movie.id)
+    let starColor = favorites.includes(movie.movie_id) ? '#ffd24d' : '#f2f2f2';
     return <MovieCard {...movie} key={index} starColor={starColor}/>
   })
   return (
