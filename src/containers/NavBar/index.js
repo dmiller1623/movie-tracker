@@ -3,7 +3,7 @@ import { InitialAccountButtons } from '../../components/InitialAccountButtons';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 
-import UserAccountBtns from '../UserAccountBtns';
+import UserAccountBtns from '../../components/UserAccountBtns';
 import { signOutUser } from '../../actions';
 
 class NavBar extends Component {
@@ -37,4 +37,4 @@ const mapDispatchToProps = dispatch => ({
   signOutUser: () => dispatch(signOutUser())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure: false})(NavBar))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))

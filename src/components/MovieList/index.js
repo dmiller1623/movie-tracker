@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieCard from '../../containers/MovieCard';
-import NavBar from '../NavBar';
+import NavBar from '../../containers/NavBar';
 
 const MovieList = ({ movies, favorites = [] }) => {
   const displayedMovies = movies.map( (movie, index) => {
