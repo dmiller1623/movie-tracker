@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFavorite } from '../../actions';
-import { addNewFavorite } from '../../utilities/apiCalls/apiCalls';
+import { addFavorite, populateFavorites } from '../../actions';
+import { addNewFavorite, deleteFavorite } from '../../utilities/apiCalls/apiCalls';
 
 class MovieCard extends Component {
   toggleFavorite = async () => {
     const movie = {...this.props, user_id: this.props.user.id}
-    // if (!this.props.favorites.includes(movie))
-    const newFavorite = await addNewFavorite(movie);
-    console.log(newFavorite)
-    this.props.addFavorite(movie.movie_id);
+    if (this.props.favorites.includes(movie.movie_id)) {
+      await deleteFavorite(this.props.user.id, movie.movie_id);
+      const updatedFavorites = this.props.favorites.filter( favorite => favorite !== movie.movie_id);
+      this.props.populateFavorites(updatedFavorites);
+    } else {
+      const newFavorite = await addNewFavorite(movie);
+      this.props.addFavorite(movie.movie_id);
+    }
   }
 
   render() {
@@ -29,11 +33,13 @@ class MovieCard extends Component {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  favorites: state.favorites
 });
 
 const mapDispatchToProps = dispatch => ({
-  addFavorite: (movieId) => dispatch(addFavorite(movieId))
+  addFavorite: (movieId) => dispatch(addFavorite(movieId)),
+  populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

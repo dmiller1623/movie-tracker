@@ -107,3 +107,13 @@ export const addNewFavorite = async ({
   }
 }
 
+export const deleteFavorite = async (userId, movieId) => {
+  try {
+    await fetch(`http://localhost:3000/api/users/${userId}/favorites/${movieId}`, {
+      method: 'DELETE'
+    });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
