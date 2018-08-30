@@ -35,7 +35,6 @@ export const getUser = async (email, password) => {
   } catch (error) {
     throw new Error(error.message);
   }
-  
 };
 
 export const getFavorites = async (userId) => {
@@ -116,4 +115,3 @@ export const deleteFavorite = async (userId, movieId) => {
     throw new Error(error.message);
   }
 }
-
