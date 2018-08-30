@@ -8,7 +8,8 @@ class MovieCard extends Component {
     const movie = {...this.props, user_id: this.props.user.id}
     // if (!this.props.favorites.includes(movie))
     const newFavorite = await addNewFavorite(movie);
-    // this.props.addFavorite(newFavorite);
+    console.log(newFavorite)
+    this.props.addFavorite(movie.movie_id);
   }
 
   render() {
@@ -32,7 +33,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addFavorite: (movie) => dispatch(addFavorite(movie))
+  addFavorite: (movieId) => dispatch(addFavorite(movieId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
