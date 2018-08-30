@@ -15,7 +15,7 @@ class MovieCard extends Component {
       const updatedFavorites = this.props.favorites.filter( favorite => favorite !== movie.movie_id);
       this.props.populateFavorites(updatedFavorites);
     } else {
-      const newFavorite = await addNewFavorite(movie);
+      await addNewFavorite(movie);
       this.props.addFavorite(movie.movie_id);
     }
   }
