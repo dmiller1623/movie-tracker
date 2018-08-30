@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, NavLink, Link } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { getMovies } from '../../utilities/apiCalls/apiCalls';
 import { populateMovies } from '../../actions';
 import MovieList from '../../components/MovieList';
-import NavBar from '../../components/NavBar';
+import SignUp from '../SignUp';
+import Login from '../Login';
 
 import './App.css';
 
@@ -18,8 +19,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
-        <MovieList movies={this.props.movies} />
+        <Route exact path = '/' render={() => <MovieList movies={this.props.movies} /> } />
+        <Route exact path = '/login' component={Login} />
+        <Route exact path = '/signup' component={SignUp} />
       </div>
     );
   }
@@ -33,4 +35,4 @@ const mapDispatchToProps = dispatch => ({
   populateMovies: (movies) => dispatch(populateMovies(movies))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

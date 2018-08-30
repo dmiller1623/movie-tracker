@@ -1,6 +1,6 @@
 import React from 'react'
 
-const signOutBtn = ({ name, signOutUser, handleSubmit}) => {
+const signOutBtn = ({ name, signOutUser}) => {
   return (
     <div>
       <h3>Hi, {name}!</h3>
@@ -9,7 +9,6 @@ const signOutBtn = ({ name, signOutUser, handleSubmit}) => {
       </button>
       <button onClick={() => {
         signOutUser()
-        handleSubmit('signOut')
       }}>
         Sign Out
       </button>

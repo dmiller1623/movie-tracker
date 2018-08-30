@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
 import { getUser } from '../../utilities/apiCalls/apiCalls';
+import { withRouter } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -24,7 +25,7 @@ class Login extends Component {
       const cleanEmail = email.trim().toLowerCase()
       const user = await getUser(cleanEmail, password);
       this.props.loginUser(user);
-      this.props.handleSubmit();
+      this.props.history.push('/')
     } else {
       alert('Please enter both email and password')
     }
@@ -58,4 +59,4 @@ const mapDispatchToProps = dispatch => ({
   loginUser: (email, password) => dispatch(loginUser(email, password))
 });
 
-export default connect(null, mapDispatchToProps)(Login)
+export default withRouter(connect(null, mapDispatchToProps)(Login))

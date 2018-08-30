@@ -1,17 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export const InitialAccountButtons = ({handleLogin, handleSignUp}) => {
+export const InitialAccountButtons = () => {
 
   return (
     <div>
-        <button
-          onClick={() => handleLogin()}>
+        <Link to='/login'>
           Login
-        </button>
-        <button
-          onClick={() => handleSignUp()}>
+        </Link>
+        <Link to='/signup'>
           Sign Up
-        </button>
+        </Link>
     </div>
   );
 };
