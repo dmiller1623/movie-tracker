@@ -1,40 +1,37 @@
 import React, { Component } from 'react';
-import { InitialAccountButtons } from '../../components/InitialAccountButtons';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import { InitialAccountButtons } from '../../components/InitialAccountButtons';
 import UserAccountBtns from '../../components/UserAccountBtns';
 import { signOutUser } from '../../actions';
 
 class NavBar extends Component {
   handleSignOut = () => {
     this.props.signOutUser();
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render() {
-    let navDisplay;
-
-    if (this.props.user.name) {
-      navDisplay =  <UserAccountBtns name={this.props.user.name} handleSignOut={this.handleSignOut}/>;
-    } else {
-      navDisplay = <InitialAccountButtons />;
-    }
+    const { name } = this.props.user;
+    const navDisplay = name ? 
+      <UserAccountBtns name={name} handleSignOut={this.handleSignOut}/> :
+      <InitialAccountButtons />;
     
     return (
-      <div>
+      <nav>
         {navDisplay}
-      </div>
+      </nav>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   signOutUser: () => dispatch(signOutUser())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserAccountBtns = ({ name, handleSignOut}) => {
+const UserAccountBtns = ({ name, handleSignOut }) => {
   return (
     <div>
       <h3>Hi, {name}!</h3>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginUser, populateFavorites } from '../../actions';
-import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
 import { withRouter } from 'react-router-dom';
 
+import { loginUser, populateFavorites } from '../../actions';
+import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
 
 class Login extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       email: '',
@@ -15,7 +15,8 @@ class Login extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value});
+    const { name, value } = event.target;
+    this.setState({[name]: value});
   }
 
   submitLogin = async (event) => {
@@ -27,28 +28,29 @@ class Login extends Component {
       this.props.loginUser(user);
       const favorites = await getFavorites(user.id);
       this.props.populateFavorites(favorites);
-      this.props.history.push('/')
+      this.props.history.push('/');
     } else {
-      alert('Please enter both email and password')
+      alert('Please enter both email and password');
     }
   }
 
   render() {
+    const { email, password } = this.state;
     return (
       <div>
-        <form onSubmit={(event) => this.submitLogin(event)}>
+        <form onSubmit={this.submitLogin}>
           <input
             type='email'
             name='email'
-            value={this.state.email}
+            value={email}
             placeholder='email'
-            onChange={(event) => this.handleChange(event)}
+            onChange={this.handleChange}
           />
           <input
             name='password'
-            value={this.state.password}
+            value={password}
             placeholder='password'
-            onChange={(event) => this.handleChange(event)}
+            onChange={this.handleChange}
           />
           <button>Submit</button>
         </form>
@@ -57,9 +59,9 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   loginUser: (email, password) => dispatch(loginUser(email, password)),
   populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Login))
+export default withRouter(connect(null, mapDispatchToProps)(Login));
