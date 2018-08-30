@@ -33,4 +33,4 @@ describe('favoritesReducer', () => {
     expect(result).toEqual(expected);
   });
 
-})
+});
