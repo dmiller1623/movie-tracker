@@ -6,6 +6,8 @@ import { InitialAccountButtons } from '../../components/InitialAccountButtons';
 import UserAccountBtns from '../../components/UserAccountBtns';
 import { signOutUser } from '../../actions';
 
+import './styles.css';
+
 class NavBar extends Component {
   handleSignOut = () => {
     this.props.signOutUser();

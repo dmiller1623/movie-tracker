@@ -1,7 +1,5 @@
 import React from 'react';
-
 import MovieCard from '../../containers/MovieCard';
-import NavBar from '../../containers/NavBar';
 
 const FavoritesList = ({ movies, favorites }) => {
   const displayedMovies = favorites.map( (favorite, index) => {
@@ -10,10 +8,7 @@ const FavoritesList = ({ movies, favorites }) => {
   })
   return (
     <main>
-      <NavBar />
-      <section>
-        {displayedMovies}
-      </section>
+      {displayedMovies}
     </main>
   )
 }

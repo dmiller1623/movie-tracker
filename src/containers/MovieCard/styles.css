@@ -1,0 +1,14 @@
+article {
+  width: 185px;
+  margin: .5rem; }
+
+img {
+  border-radius: 10px; }
+
+svg {
+  position: absolute;
+  margin-left: calc(185px - 3rem);
+  transition: all .3s;
+  cursor: pointer; }
+  svg:hover {
+    width: 2.8rem; }
