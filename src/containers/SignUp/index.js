@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { signUpUser } from '../../actions';
 import { addNewUser } from '../../utilities/apiCalls/apiCalls';
 
-class SignUp extends Component {
+export class SignUp extends Component {
   constructor() {
     super();
     this.state = {
@@ -62,7 +62,7 @@ class SignUp extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   signUpUser: (user) => dispatch(signUpUser(user))
 });
 

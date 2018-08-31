@@ -1,13 +1,16 @@
 import React from 'react'
-// import SignUp from '/SignUp'
-import { mapDispatchToProps } from './index.js'
+import { shallow, mount } from 'enzyme'
+import {  SignUp, mapDispatchToProps } from '../SignUp'
 import { signUpUser } from '../../actions'
-import { shallow } from 'enzyme'
+
 
 describe('SignUp', () => {
   let wrapper
   describe('SignUp component', () => {
-    // wrapper =shallow(<SignUp />) 
+    wrapper = mount(<SignUp />)
+    it('should update state when user enters something in an input', () => {
+
+    })
   })
 
   describe('matchdispatchtoprops', () => {
