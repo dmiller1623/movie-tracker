@@ -5,6 +5,8 @@ import { Route, withRouter } from 'react-router-dom';
 import MovieList from '../../components/MovieList';
 import SignUp from '../SignUp';
 import Login from '../Login';
+import NavBar from '../../containers/NavBar';
+
 import FavoritesList from '../../components/FavoritesList';
 import { populateMovies } from '../../actions';
 import { getMovies } from '../../utilities/apiCalls/apiCalls';
@@ -23,9 +25,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Route exact path = '/' render={() => <MovieList movies={movies} favorites={favorites} /> } />
+        <header>
+          <NavBar />
+          <h1 onClick={() => this.props.history.push('/')} >
+              MOVIE TRACKER
+          </h1>
+        </header>
         <Route exact path = '/login' component={Login} />
         <Route exact path = '/signup' component={SignUp} />
+        <Route exact path = '/' render={() => <MovieList movies={movies} favorites={favorites} /> } />
         <Route exact path = '/favorites' render={() => <FavoritesList movies={movies} favorites={favorites} />} />
       </div>
     );

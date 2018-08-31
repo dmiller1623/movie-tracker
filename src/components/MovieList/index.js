@@ -1,7 +1,6 @@
 import React from 'react';
-
 import MovieCard from '../../containers/MovieCard';
-import NavBar from '../../containers/NavBar';
+import './styles.css';
 
 const MovieList = ({ movies, favorites = [] }) => {
   const displayedMovies = movies.map( (movie, index) => {
@@ -11,10 +10,7 @@ const MovieList = ({ movies, favorites = [] }) => {
 
   return (
     <main>
-      <NavBar />
-      <section>
-        {displayedMovies}
-      </section>
+      {displayedMovies}
     </main>
   )
 }
