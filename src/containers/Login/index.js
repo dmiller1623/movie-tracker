@@ -25,6 +25,7 @@ class Login extends Component {
     if (email && password) {
       const cleanEmail = email.trim().toLowerCase()
       const user = await getUser(cleanEmail, password);
+      console.log(user)
       this.props.loginUser(user);
       const favorites = await getFavorites(user.id);
       this.props.populateFavorites(favorites);
