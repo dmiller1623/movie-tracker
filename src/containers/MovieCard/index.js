@@ -6,7 +6,7 @@ import { addNewFavorite, deleteFavorite } from '../../utilities/apiCalls/apiCall
 
 import './styles.css';
 
-class MovieCard extends Component {
+export class MovieCard extends Component {
   toggleFavorite = async () => {
     const { id, name } = this.props.user;
     const { favorites, addFavorite, populateFavorites } = this.props;
@@ -44,12 +44,12 @@ class MovieCard extends Component {
   }
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   user: state.user,
   favorites: state.favorites
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addFavorite: (movieId) => dispatch(addFavorite(movieId)),
   populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
 });
