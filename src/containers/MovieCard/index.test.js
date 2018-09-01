@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import {  MovieCard, mapDispatchToProps } from '../MovieCard';
-import { addFavorite } from '../../actions';
+import { addFavorite, populateFavorites } from '../../actions';
 
 
 
@@ -15,8 +15,8 @@ describe('MovieCard', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('should call dispatch when using a function mapDispatchToProps', () => {
-      const mockMovieId = 5;
+    it('should call dispatch when using a function addFavorite', () => {
+      const mockMovieId = '5';
 
       const mockDispatch = jest.fn();
       const actionToDispatch = addFavorite(mockMovieId);
@@ -24,6 +24,19 @@ describe('MovieCard', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.addFavorite(mockMovieId);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+
+    });
+    it('should call dispatch when using a function populateFavorites', () => {
+      const mockMovieId = '5';
+
+      const mockDispatch = jest.fn();
+      const actionToDispatch = populateFavorites(mockMovieId);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.populateFavorites(mockMovieId);
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
 
