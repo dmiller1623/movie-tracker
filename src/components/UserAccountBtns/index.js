@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const UserAccountBtns = ({ name, handleSignOut }) => {
   return (
@@ -16,3 +17,8 @@ const UserAccountBtns = ({ name, handleSignOut }) => {
 }
 
 export default UserAccountBtns;
+
+UserAccountBtns.propTypes = {
+  name: PropTypes.string,
+  handleSignOut: PropTypes.func
+};

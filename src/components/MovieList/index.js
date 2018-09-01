@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../../containers/MovieCard';
 import './styles.css';
 
@@ -16,3 +17,8 @@ const MovieList = ({ movies, favorites = [] }) => {
 }
 
 export default MovieList;
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object),
+  favorites: PropTypes.arrayOf(PropTypes.number)
+};
