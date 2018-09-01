@@ -19,11 +19,14 @@ describe('MovieCard', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should return an alert if toggleFavorite is called an no user is logged in', async () => {
-      const user = {id: 1, name: undefined, password: "password", email: "tman2272@aol.com"};
+    it('should return an alert if toggleFavorite is called and user is not logged in', async () => {
+      const user = {};
       const favorites = [0, 1, 2, 3];
+
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
+
       wrapper.instance().toggleFavorite();
+
       expect(deleteFavorite).not.toHaveBeenCalled();
 
     });
@@ -56,7 +59,7 @@ describe('MovieCard', () => {
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
 
       const spy = spyOn(wrapper.instance(), 'toggleFavorite');
-      
+
       wrapper.find('svg').simulate('click');
 
       expect(spy).toHaveBeenCalled();
