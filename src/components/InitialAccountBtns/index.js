@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const InitialAccountButtons = () => {
+export const InitialAccountBtns = () => {
   return (
     <div>
       <Link to='/login'>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { InitialAccountButtons } from '../../components/InitialAccountButtons';
+import { InitialAccountBtns } from '../../components/InitialAccountBtns';
 import UserAccountBtns from '../../components/UserAccountBtns';
 import { signOutUser } from '../../actions';
 
@@ -18,7 +18,7 @@ class NavBar extends Component {
     const { name } = this.props.user;
     const navDisplay = name ? 
       <UserAccountBtns name={name} handleSignOut={this.handleSignOut}/> :
-      <InitialAccountButtons />;
+      <InitialAccountBtns />;
     
     return (
       <nav>
