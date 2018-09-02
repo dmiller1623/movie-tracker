@@ -1,16 +1,18 @@
+@import "variables.scss";
+
 .initialBtns {
-  color: #f2f2f2;
+  color: $off-white;
   text-decoration: none;
   margin: 0 .5rem;
   &:hover {
-    color: #93A2AA;
+    color: $light-grey;
   }
 }
 
 span {
-  color: #f2f2f2;
+  color: $off-white;
 }
 
 .selected {
-  color: #93A2AA;
+  color: $light-grey;
 }

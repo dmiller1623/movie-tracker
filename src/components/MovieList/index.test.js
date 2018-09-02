@@ -6,7 +6,7 @@ describe('MovieList', () => {
 
   it('should match the snapshot with no movies', () => {
     const movies = [];
-    const wrapper = shallow(<MovieList movies={movies} />)
+    const wrapper = shallow(<MovieList movies={movies} />);
 
     expect(wrapper.html()).toMatchSnapshot();
   });
@@ -20,7 +20,7 @@ describe('MovieList', () => {
       vote_average: 1,
       overview: 'test'
     }];
-    const wrapper = shallow(<MovieList movies={movies} />)
+    const wrapper = shallow(<MovieList movies={movies} />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -41,7 +41,7 @@ describe('MovieList', () => {
       vote_average: 1,
       overview: 'test2'
     }];
-    const wrapper = shallow(<MovieList movies={movies} />)
+    const wrapper = shallow(<MovieList movies={movies} />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -56,7 +56,7 @@ describe('MovieList', () => {
       overview: 'test'
     }];
     let favorites = [];
-    let wrapper = shallow(<MovieList movies={movies} favorites={favorites}/>)
+    let wrapper = shallow(<MovieList movies={movies} favorites={favorites}/>);
     
     expect(wrapper.find('path').prop('fill')).toEqual('#f2f2f2');
 
@@ -68,7 +68,7 @@ describe('MovieList', () => {
       vote_average: 1,
       overview: 'test'
     }];
-    wrapper = shallow(<MovieList movies={movies} favorites={favorites}/>)
+    wrapper = shallow(<MovieList movies={movies} favorites={favorites}/>);
 
     expect(wrapper.find('path').prop('fill')).toEqual('#ffd24d');
   });

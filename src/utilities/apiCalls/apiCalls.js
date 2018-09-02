@@ -47,7 +47,7 @@ export const getFavorites = async (userId) => {
       const favoriteMovieIds = favorites.data.map( favorite => favorite.movie_id );
       return favoriteMovieIds;
     }
-  } catch(error) {
+  } catch (error) {
     throw new Error(error.message);
   }
 };
@@ -104,7 +104,7 @@ export const addNewFavorite = async ({
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 export const deleteFavorite = async (userId, movieId) => {
   try {
@@ -114,4 +114,4 @@ export const deleteFavorite = async (userId, movieId) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};

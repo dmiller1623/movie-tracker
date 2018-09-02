@@ -1,6 +1,8 @@
+@import "variables.scss";
+
 .App {
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
+  font-family: $main-font;
 }
 
 header {
@@ -16,4 +18,32 @@ header {
 .logo {
   height: 8rem;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) { 
+  header {
+    flex-direction: column;
+    align-items: center;
+    height: 12rem;
+  }
+}
+
+@media only screen and (max-width: 535px) { 
+  header {
+    height: 10rem;
+  }
+
+  .logo {
+    height: 6rem;
+  }
+}
+
+@media only screen and (max-width: 430px) { 
+  header {
+    height: 8rem;
+  }
+  
+  .logo {
+    height: 4rem;
+  }
 }
