@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { loginUser, populateFavorites } from '../../actions';
 import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,7 +25,6 @@ class Login extends Component {
     if (email && password) {
       const cleanEmail = email.trim().toLowerCase()
       const user = await getUser(cleanEmail, password);
-      console.log(user)
       this.props.loginUser(user);
       const favorites = await getFavorites(user.id);
       this.props.populateFavorites(favorites);
@@ -61,7 +60,7 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   loginUser: (email, password) => dispatch(loginUser(email, password)),
   populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
 });
