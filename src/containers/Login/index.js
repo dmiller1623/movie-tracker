@@ -27,6 +27,8 @@ export class Login extends Component {
       const cleanEmail = email.trim().toLowerCase()
       const user = await getUser(cleanEmail, password);
       this.props.loginUser(user);
+      const userString = JSON.stringify(user);
+      localStorage.setItem('user', userString);
       const favorites = await getFavorites(user.id);
       this.props.populateFavorites(favorites);
       this.props.history.push('/');
