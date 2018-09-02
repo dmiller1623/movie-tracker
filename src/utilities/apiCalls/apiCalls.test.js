@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { mockMovieDataFromFetch, movieDataResult } from './mockData'
-import { getMovies, getUser } from './apiCalls';
+import { getMovies, getUser, getFavorites } from './apiCalls';
 import apiKey from '../../apiKey.js';
 
 
@@ -60,34 +60,53 @@ describe('apiCalls', () => {
 
   describe('getFavorites', () => {
     it('fetch should be called with the correct url', async () => {
-      await getUser()
-      expect(window.fetch).toHaveBeenCalledWith('http://localhost:3000/api/users', {
-         "body": "{}", "headers": {"Content-Type": "application/json"}, "method": "POST"
-      })
+      const userId = 1
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({ data: [] })
+      }))
+      await getFavorites(userId)
+      expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3000/api/users/${userId}/favorites`)
+         
     })
 
     it('should return an array if status code is ok', async () => {
-      const email = 'ben@ben.com'
-      const password = 'ben'
-      const userData = {status: 'success', data: 
-      {id: 2, name: 'ben', password: 'ben', email: 'ben@ben.com'} , message: 'Retrieved ONE User'}
+      const userId = 1
+      const favorites = {status: "success", data: [{movie_id: 1}, {movie_id: 2}, {movie_id: 3}], message: "Retrieved All favorites"}
+      const expected = [1, 2, 3]
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 200,
-        json: () => Promise.resolve(userData)
+        json: () => Promise.resolve(favorites)
       }))
-      const userDataResult = await getUser(email, password)
-      expect(userDataResult).toEqual(userData.data)
+      const movieIds = await getFavorites(userId)
+      expect(movieIds).toEqual(expected)
     })
 
     it('should throw an error if the status is not ok', async () => {
       const errorMessage = new Error('boo')
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(errorMessage))
-      await expect(getUser()).rejects.toEqual(errorMessage)
+      await expect(getFavorites()).rejects.toEqual(errorMessage)
     })
   })
 
   describe('addNewUser', () => {
+    it('should return an array if status code is ok', async () => {
+      const userId = 1
+      const favorites = {status: "success", data: [{movie_id: 1}, {movie_id: 2}, {movie_id: 3}], message: "Retrieved All favorites"}
+      const expected = [1, 2, 3]
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve(favorites)
+      }))
+      const movieIds = await getFavorites(userId)
+      expect(movieIds).toEqual(expected)
+    })
 
+    it('should throw an error if the status is not ok', async () => {
+      const errorMessage = new Error('boo')
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject(errorMessage))
+      await expect(getFavorites()).rejects.toEqual(errorMessage)
+    })
   })
 
   describe('addNewFavorite', () => {
