@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import {  NavBar, mapStateToProps, mapDispatchToProps } from '../NavBar'
 import { signOutUser } from '../../actions'
-import { InitialAccountButtons } from '../../components/InitialAccountButtons';
+import { InitialAccountBtns } from '../../components/InitialAccountBtns';
 import UserAccountBtns from '../../components/UserAccountBtns';
 
 describe('NavBar', () => {
@@ -43,7 +43,7 @@ describe('NavBar', () => {
       const user = {}
 
       wrapper = shallow(<NavBar user={user}/>)
-      expect(wrapper.find(InitialAccountButtons).length).toEqual(1)
+      expect(wrapper.find(InitialAccountBtns).length).toEqual(1)
     })
   })
 
