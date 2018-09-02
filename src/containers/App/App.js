@@ -14,7 +14,7 @@ import { getFavorites, getMovies } from '../../utilities/apiCalls/apiCalls';
 
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
   
   componentDidMount = async () => {
     const movies = await getMovies();

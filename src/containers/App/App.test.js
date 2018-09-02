@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter, MemoryRouter} from 'react-router-dom';
 
-import App from './App.js';
+import { App } from './App.js';
+import { Login } from '../Login';
+import { SignUp } from '../SignUp';
 import {  mapStateToProps, mapDispatchToProps } from './App.js';
 import { populateMovies } from '../../actions'
 
@@ -18,6 +20,38 @@ describe('App', () => {
   
       expect(wrapper).toMatchSnapshot();
     });
+
+    it.skip('should populate movies on componentDidMount', async () => {
+      const mockPopulateMovies = jest.fn()
+      const wrapper = await shallow(
+        <BrowserRouter>
+          <App populateMovies={mockPopulateMovies}/>
+        </BrowserRouter>);
+      await wrapper.update()
+
+      expect(mockPopulateMovies).toHaveBeenCalled()
+    })
+
+    it.skip('should check for user in locale storage on componentDidMount and login user if there is one', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.state('user')).toEqual(undefined);
+      const user = {name: 'test'};
+  
+      localStorage.setItem('user', JSON.stringify(user));
+      wrapper = shallow(<App />);
+  
+      expect(wrapper.state('user')).toEqual({name: 'test'});
+    })
+
+    it.skip('should render a login component', () => {
+      const wrapper = shallow(
+        <MemoryRouter initialEntries={[ '/login' ]}>
+          <App />
+        </MemoryRouter>);
+
+      expect(wrapper.find('Login')).toHaveLength(1)
+    })
+
   });
 
   describe('matchStateToProps', () => {
