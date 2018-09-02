@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {  MovieCard, mapDispatchToProps } from '../MovieCard';
+import {  MovieCard, mapStateToProps, mapDispatchToProps } from '../MovieCard';
 import { addFavorite, populateFavorites } from '../../actions';
 import { addNewFavorite, deleteFavorite } from '../../utilities/apiCalls/apiCalls';
 
@@ -63,6 +63,20 @@ describe('MovieCard', () => {
       wrapper.find('svg').simulate('click');
 
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('mapStateToProps', () => {
+    it('should return an object with a todos array', () => {
+      const mockUser = {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"};
+      const mockFavorites = [0, 1, 2];
+
+      const mockState = {user: {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"}, favorites: [0, 1, 2]};
+
+      const expected = { user: mockUser, favorites: mockFavorites};
+
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(expected);
     });
   });
 
