@@ -73,5 +73,5 @@ export default withRouter(connect(null, mapDispatchToProps)(Login));
 Login.propTypes = {
   loginUser: PropTypes.func,
   populateFavorites : PropTypes.func,
-  history: PropTypes.array
+  history: PropTypes.object
 }
