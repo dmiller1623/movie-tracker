@@ -3,3 +3,21 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.more-btn {
+  width: 342px;
+  height: 500px;
+  text-align: center;
+  color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+.more-text {
+  margin: 170px 20px;
+  border-radius: 80px;
+  border: 2px solid white;
+  padding: 50px;
+  font-size: 2rem;
+  cursor: pointer;
+}
