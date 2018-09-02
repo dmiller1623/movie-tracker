@@ -1,12 +1,13 @@
 article {
-  width: 342px;
+  width: 285px;
   margin: .5rem; }
   article img {
+    width: 285px;
     border-radius: 10px; }
 
 svg {
   position: absolute;
-  margin-left: calc(342px - 4.2rem);
+  margin-left: calc(285px - 4.2rem);
   transition: all .3s;
   cursor: pointer; }
   svg:hover {
