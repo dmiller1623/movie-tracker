@@ -24,13 +24,13 @@ ShallowWrapper {
                 onChange={[Function]}
                 placeholder="email"
                 type="email"
-                value="b"
+                value=""
         />
         <input
                 name="password"
                 onChange={[Function]}
                 placeholder="password"
-                value="password"
+                value=""
         />
         <button>
                 Submit
@@ -49,13 +49,13 @@ ShallowWrapper {
             onChange={[Function]}
             placeholder="email"
             type="email"
-            value="b"
+            value=""
 />,
           <input
             name="password"
             onChange={[Function]}
             placeholder="password"
-            value="password"
+            value=""
 />,
           <button>
             Submit
@@ -74,7 +74,7 @@ ShallowWrapper {
             "onChange": [Function],
             "placeholder": "email",
             "type": "email",
-            "value": "b",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -88,7 +88,7 @@ ShallowWrapper {
             "name": "password",
             "onChange": [Function],
             "placeholder": "password",
-            "value": "password",
+            "value": "",
           },
           "ref": null,
           "rendered": null,
@@ -124,13 +124,13 @@ ShallowWrapper {
                     onChange={[Function]}
                     placeholder="email"
                     type="email"
-                    value="b"
+                    value=""
           />
           <input
                     name="password"
                     onChange={[Function]}
                     placeholder="password"
-                    value="password"
+                    value=""
           />
           <button>
                     Submit
@@ -149,13 +149,13 @@ ShallowWrapper {
               onChange={[Function]}
               placeholder="email"
               type="email"
-              value="b"
+              value=""
 />,
             <input
               name="password"
               onChange={[Function]}
               placeholder="password"
-              value="password"
+              value=""
 />,
             <button>
               Submit
@@ -174,7 +174,7 @@ ShallowWrapper {
               "onChange": [Function],
               "placeholder": "email",
               "type": "email",
-              "value": "b",
+              "value": "",
             },
             "ref": null,
             "rendered": null,
@@ -188,7 +188,7 @@ ShallowWrapper {
               "name": "password",
               "onChange": [Function],
               "placeholder": "password",
-              "value": "password",
+              "value": "",
             },
             "ref": null,
             "rendered": null,
