@@ -69,7 +69,7 @@ export const addNewUser = async (name, email, password) => {
       alert('User already exists, please try another email or login to an account');
       return {};
     } else {
-      return await getUser(email, password);
+      return await response.json();
     }  
   } catch (error) {
     throw new Error(error.message);
