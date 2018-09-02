@@ -11,6 +11,7 @@ import './styles.css';
 class NavBar extends Component {
   handleSignOut = () => {
     this.props.signOutUser();
+    localStorage.clear();
     this.props.history.push('/');
   }
 
