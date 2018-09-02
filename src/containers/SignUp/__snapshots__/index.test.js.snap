@@ -20,12 +20,14 @@ ShallowWrapper {
         onSubmit={[Function]}
 >
         <input
+                autoComplete="on"
                 name="name"
                 onChange={[Function]}
                 placeholder="name"
                 value=""
         />
         <input
+                autoComplete="on"
                 name="email"
                 onChange={[Function]}
                 placeholder="email"
@@ -33,13 +35,15 @@ ShallowWrapper {
                 value=""
         />
         <input
+                autoComplete="off"
                 name="password"
                 onChange={[Function]}
                 placeholder="password"
+                type="password"
                 value=""
         />
         <button>
-                Submit
+                Sign Up
         </button>
 </form>,
     },
@@ -51,12 +55,14 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <input
+            autoComplete="on"
             name="name"
             onChange={[Function]}
             placeholder="name"
             value=""
 />,
           <input
+            autoComplete="on"
             name="email"
             onChange={[Function]}
             placeholder="email"
@@ -64,13 +70,15 @@ ShallowWrapper {
             value=""
 />,
           <input
+            autoComplete="off"
             name="password"
             onChange={[Function]}
             placeholder="password"
+            type="password"
             value=""
 />,
           <button>
-            Submit
+            Sign Up
 </button>,
         ],
         "onSubmit": [Function],
@@ -82,6 +90,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "autoComplete": "on",
             "name": "name",
             "onChange": [Function],
             "placeholder": "name",
@@ -96,6 +105,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "autoComplete": "on",
             "name": "email",
             "onChange": [Function],
             "placeholder": "email",
@@ -111,9 +121,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "autoComplete": "off",
             "name": "password",
             "onChange": [Function],
             "placeholder": "password",
+            "type": "password",
             "value": "",
           },
           "ref": null,
@@ -125,10 +137,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Submit",
+            "children": "Sign Up",
           },
           "ref": null,
-          "rendered": "Submit",
+          "rendered": "Sign Up",
           "type": "button",
         },
       ],
@@ -146,12 +158,14 @@ ShallowWrapper {
           onSubmit={[Function]}
 >
           <input
+                    autoComplete="on"
                     name="name"
                     onChange={[Function]}
                     placeholder="name"
                     value=""
           />
           <input
+                    autoComplete="on"
                     name="email"
                     onChange={[Function]}
                     placeholder="email"
@@ -159,13 +173,15 @@ ShallowWrapper {
                     value=""
           />
           <input
+                    autoComplete="off"
                     name="password"
                     onChange={[Function]}
                     placeholder="password"
+                    type="password"
                     value=""
           />
           <button>
-                    Submit
+                    Sign Up
           </button>
 </form>,
       },
@@ -177,12 +193,14 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <input
+              autoComplete="on"
               name="name"
               onChange={[Function]}
               placeholder="name"
               value=""
 />,
             <input
+              autoComplete="on"
               name="email"
               onChange={[Function]}
               placeholder="email"
@@ -190,13 +208,15 @@ ShallowWrapper {
               value=""
 />,
             <input
+              autoComplete="off"
               name="password"
               onChange={[Function]}
               placeholder="password"
+              type="password"
               value=""
 />,
             <button>
-              Submit
+              Sign Up
 </button>,
           ],
           "onSubmit": [Function],
@@ -208,6 +228,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
+              "autoComplete": "on",
               "name": "name",
               "onChange": [Function],
               "placeholder": "name",
@@ -222,6 +243,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
+              "autoComplete": "on",
               "name": "email",
               "onChange": [Function],
               "placeholder": "email",
@@ -237,9 +259,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
+              "autoComplete": "off",
               "name": "password",
               "onChange": [Function],
               "placeholder": "password",
+              "type": "password",
               "value": "",
             },
             "ref": null,
@@ -251,10 +275,10 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Submit",
+              "children": "Sign Up",
             },
             "ref": null,
-            "rendered": "Submit",
+            "rendered": "Sign Up",
             "type": "button",
           },
         ],

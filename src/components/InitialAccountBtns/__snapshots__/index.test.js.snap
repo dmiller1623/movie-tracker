@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InitialAccountBtns should match the snapshot 1`] = `"<div><a href=\\"/login\\">Login</a><a href=\\"/signup\\">Sign Up</a></div>"`;
+exports[`InitialAccountBtns should match the snapshot 1`] = `"<div><a class=\\"initialBtns\\" href=\\"/login\\">Login</a><span> | </span><a class=\\"initialBtns\\" href=\\"/signup\\">Sign Up</a></div>"`;

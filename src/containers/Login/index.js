@@ -26,7 +26,7 @@ export class Login extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     if (email && password) {
-      const cleanEmail = email.trim().toLowerCase()
+      const cleanEmail = email.trim().toLowerCase();
       const user = await getUser(cleanEmail, password);
       this.props.loginUser(user);
       const userString = JSON.stringify(user);
@@ -35,7 +35,7 @@ export class Login extends Component {
       this.props.populateFavorites(favorites);
       this.props.history.push('/');
     } else {
-      alert('Please enter both email and password');
+      alert('Please enter both an email and a password');
     }
   }
 
@@ -50,6 +50,7 @@ export class Login extends Component {
             name='email'
             value={email}
             placeholder='email'
+            autoComplete="on"
             onChange={this.handleChange}
           />
           <input
@@ -57,6 +58,7 @@ export class Login extends Component {
             type='password'
             value={password}
             placeholder='password'
+            autoComplete="off"
             onChange={this.handleChange}
           />
           <button>Login</button>
@@ -77,4 +79,4 @@ Login.propTypes = {
   loginUser: PropTypes.func,
   populateFavorites : PropTypes.func,
   history: PropTypes.object
-}
+};

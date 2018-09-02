@@ -43,7 +43,7 @@ export class MovieCard extends Component {
       </article>
     );
   }
-};
+}
 
 export const mapStateToProps = (state) => ({
   user: state.user,

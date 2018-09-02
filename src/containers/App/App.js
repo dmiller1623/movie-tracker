@@ -43,8 +43,10 @@ export class App extends Component {
         </header>
         <Route exact path = '/login' component={Login} />
         <Route exact path = '/signup' component={SignUp} />
-        <Route exact path = '/' render={() => <MovieList movies={movies} favorites={favorites} /> } />
-        <Route exact path = '/favorites' render={() => <FavoritesList movies={movies} favorites={favorites} />} />
+        <Route exact path = '/' render={() => 
+          <MovieList movies={movies} favorites={favorites} /> } />
+        <Route exact path = '/favorites' render={() => 
+          <FavoritesList movies={movies} favorites={favorites} />} />
       </div>
     );
   }
@@ -53,7 +55,7 @@ export class App extends Component {
 export const mapStateToProps = state => ({
   movies: state.movies,
   favorites: state.favorites
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   populateMovies: (movies) => dispatch(populateMovies(movies)),

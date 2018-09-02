@@ -2,11 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { BrowserRouter, MemoryRouter} from 'react-router-dom';
 
-import { App } from './App.js';
 import { Login } from '../Login';
-import { SignUp } from '../SignUp';
-import {  mapStateToProps, mapDispatchToProps } from './App.js';
-import { populateMovies } from '../../actions'
+import { App, mapStateToProps, mapDispatchToProps } from './App.js';
+import { populateMovies } from '../../actions';
 
 
 describe('App', () => {
@@ -22,18 +20,18 @@ describe('App', () => {
     });
 
     it.skip('should populate movies on componentDidMount', async () => {
-      const mockPopulateMovies = jest.fn()
+      const mockPopulateMovies = jest.fn();
       const wrapper = await shallow(
         <BrowserRouter>
           <App populateMovies={mockPopulateMovies}/>
         </BrowserRouter>);
-      await wrapper.update()
+      await wrapper.update();
 
-      expect(mockPopulateMovies).toHaveBeenCalled()
-    })
+      expect(mockPopulateMovies).toHaveBeenCalled();
+    });
 
     it.skip('should check for user in locale storage on componentDidMount and login user if there is one', () => {
-      const wrapper = shallow(<App />);
+      let wrapper = shallow(<App />);
       expect(wrapper.state('user')).toEqual(undefined);
       const user = {name: 'test'};
   
@@ -41,17 +39,16 @@ describe('App', () => {
       wrapper = shallow(<App />);
   
       expect(wrapper.state('user')).toEqual({name: 'test'});
-    })
+    });
 
     it.skip('should render a login component', () => {
       const wrapper = shallow(
-        <MemoryRouter initialEntries={[ '/login' ]}>
+        <MemoryRouter initialEntries={['/login']}>
           <App />
         </MemoryRouter>);
 
-      expect(wrapper.find('Login')).toHaveLength(1)
-    })
-
+      expect(wrapper.find('Login')).toHaveLength(1);
+    });
   });
 
   describe('matchStateToProps', () => {
@@ -82,9 +79,8 @@ describe('App', () => {
       const mappedProps = mapStateToProps(mockState);
 
       expect(mappedProps).toEqual(expected);
-    })
+    });
   });
-
 
   describe('matchDispatchToProps', () => {
     it('should call dispatch when using a function MDTP', () => {

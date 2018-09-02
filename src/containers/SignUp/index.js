@@ -22,13 +22,16 @@ export class SignUp extends Component {
   submitSignUp = async (event) => {
     event.preventDefault();
     const { name, email, password } = this.state;
-    const cleanEmail = email.trim().toLowerCase();
-    const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
-    await addNewUser(capitalName, cleanEmail, password);
-    const newUser = await getUser(cleanEmail, password);
-    
-    this.props.signUpUser(newUser);
-    this.props.history.push('/');
+    if (name && email && password) {
+      const cleanEmail = email.trim().toLowerCase();
+      const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+      await addNewUser(capitalName, cleanEmail, password);
+      const newUser = await getUser(cleanEmail, password);
+      this.props.signUpUser(newUser);
+      this.props.history.push('/');
+    } else {
+      alert('Please enter a name, email, and password');
+    }
   }
 
   render() {
@@ -41,6 +44,7 @@ export class SignUp extends Component {
             name='name'
             value={name}
             placeholder='name'
+            autoComplete="on"
             onChange={this.handleChange}
           />
           <input
@@ -48,6 +52,7 @@ export class SignUp extends Component {
             name='email'
             value={email}
             placeholder='email'
+            autoComplete="on"
             onChange={this.handleChange}
           />
           <input
@@ -55,6 +60,7 @@ export class SignUp extends Component {
             type='password'
             value={password}
             placeholder='password'
+            autoComplete="off"
             onChange={this.handleChange}
           />
           <button>Sign Up</button>
