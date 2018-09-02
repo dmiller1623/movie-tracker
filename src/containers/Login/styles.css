@@ -1,0 +1,29 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin: 8rem auto 0 auto; }
+
+input {
+  height: 2.5rem;
+  font-size: 1.8rem;
+  padding-left: .5rem;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 1rem; }
+  input::placeholder {
+    color: #93A2AA; }
+
+button {
+  outline: none;
+  height: 2.5rem;
+  margin-top: 2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  padding: .5rem;
+  background-color: #93A2AA;
+  color: #f2f2f2;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer; }
+  button:hover {
+    background-color: #6c797f; }

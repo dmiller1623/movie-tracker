@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import './styles.css';
 
 const UserAccountBtns = ({ name, handleSignOut }) => {
   return (
-    <div>
+    <div className='userBtns'>
       <h3>Hi, {name}!</h3>
-      <Link to='/favorites'>
+      <NavLink activeClassName='selected' className='favoritesBtn' to='/favorites'>
         View Favorites
-      </Link>
+      </NavLink>
+      <span> | </span>
       <button onClick={() => handleSignOut()}>
         Sign Out
       </button>

@@ -1,5 +1,5 @@
 article {
-  width: 185px;
+  width: 342px;
   margin: .5rem; }
 
 img {
@@ -7,7 +7,7 @@ img {
 
 svg {
   position: absolute;
-  margin-left: calc(185px - 3rem);
+  margin-left: calc(342px - 3rem);
   transition: all .3s;
   cursor: pointer; }
   svg:hover {
