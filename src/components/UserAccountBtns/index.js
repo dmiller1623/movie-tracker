@@ -8,6 +8,7 @@ const UserAccountBtns = ({ name, handleSignOut }) => {
   return (
     <div className='userBtns'>
       <h3>Hi, {name}!</h3>
+      <div>
       <NavLink 
         activeClassName='selected' 
         className='favoritesBtn' 
@@ -18,6 +19,7 @@ const UserAccountBtns = ({ name, handleSignOut }) => {
       <button onClick={() => handleSignOut()}>
         Sign Out
       </button>
+      </div>
     </div>
   );
 };

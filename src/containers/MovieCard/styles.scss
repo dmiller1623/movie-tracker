@@ -1,18 +1,30 @@
 article {
   width: 342px;
   margin: .5rem;
-}
-
-img {
-  border-radius: 10px;
+  img {
+    border-radius: 10px;
+  }
 }
 
 svg {
   position: absolute;
-  margin-left: calc(342px - 3rem);
+  margin-left: calc(342px - 4.2rem);
   transition: all .3s;
   cursor: pointer;
   &:hover {
-    width: 2.8rem;
+    width: 4.2rem;
   }
+}
+
+@media only screen and (max-width: 430px) { 
+  article {
+    width: 250px;
+    img {
+      width: 250px;
+    }
+    svg {
+      margin-left: calc(250px - 4.2rem);
+      transition: none;
+    }
+  } 
 }
