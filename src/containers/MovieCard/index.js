@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import { addFavorite, populateFavorites } from '../../actions';
 import { addNewFavorite, deleteFavorite } from '../../utilities/apiCalls/apiCalls';
@@ -10,7 +11,7 @@ export class MovieCard extends Component {
   toggleFavorite = async () => {
     const { id, name } = this.props.user;
     const { favorites, addFavorite, populateFavorites } = this.props;
-    const movie = {...this.props, user_id: id}
+    const movie = {...this.props, user_id: id};
     
     if (!name) {
       return alert('To favorite a movie, please login or sign up for a new account.');
@@ -55,3 +56,17 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+
+const { string, func, number, shape, arrayOf } = PropTypes;
+MovieCard.propTypes = {
+  title: string,
+  poster_path: string,
+  starColor: string,
+  favorites: arrayOf(number),
+  user: shape({
+    id: number,
+    name: string
+  }),
+  addFavorite: func,
+  populateFavorites: func
+};
