@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { signUpUser } from '../../actions';
-import { addNewUser } from '../../utilities/apiCalls/apiCalls';
+import { addNewUser, getUser } from '../../utilities/apiCalls/apiCalls';
 
 export class SignUp extends Component {
   constructor() {
@@ -24,8 +24,9 @@ export class SignUp extends Component {
     const { name, email, password } = this.state;
     const cleanEmail = email.trim().toLowerCase();
     const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
-    const newUser = await addNewUser(capitalName, cleanEmail, password);
-
+    await addNewUser(capitalName, cleanEmail, password);
+    const newUser = await getUser(cleanEmail, password);
+    
     this.props.signUpUser(newUser);
     this.props.history.push('/');
   }
