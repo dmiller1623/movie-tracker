@@ -14,7 +14,7 @@ import { getFavorites, getMovies } from '../../utilities/apiCalls/apiCalls';
 
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
   
   componentDidMount = async () => {
     const movies = await getMovies();
@@ -34,10 +34,12 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+          <img 
+            className='logo'
+            onClick={() => this.props.history.push('/')}
+            src={require('../../assets/shitty-logo.png')}
+            alt='sh**ty sci-fi' />    
           <NavBar />
-          <h1 onClick={() => this.props.history.push('/')} >
-              MOVIE TRACKER
-          </h1>
         </header>
         <Route exact path = '/login' component={Login} />
         <Route exact path = '/signup' component={SignUp} />

@@ -4,7 +4,7 @@ exports[`App App component should match the snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <BrowserRouter>
-    <withRouter(Connect(App)) />
+    <App />
 </BrowserRouter>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -18,7 +18,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <withRouter(Connect(App)) />,
+      "children": <App />,
       "history": Object {
         "action": "POP",
         "block": [Function],
@@ -42,7 +42,7 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {},
       "ref": null,
       "rendered": null,
@@ -56,7 +56,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <withRouter(Connect(App)) />,
+        "children": <App />,
         "history": Object {
           "action": "POP",
           "block": [Function],
@@ -80,7 +80,7 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {},
         "ref": null,
         "rendered": null,

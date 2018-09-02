@@ -1,15 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import './styles.css';
 
 export const InitialAccountBtns = () => {
   return (
     <div>
-      <Link to='/login'>
-        Login
-      </Link>
-      <Link to='/signup'>
+      <NavLink activeClassName='selected' className='initialBtns' to='/login'>
+       Login
+      </NavLink>
+      <span> | </span>
+      <NavLink activeClassName='selected' className='initialBtns' to='/signup'>
         Sign Up
-      </Link>
+      </NavLink>
     </div>
   );
 };

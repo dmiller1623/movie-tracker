@@ -29,7 +29,7 @@ export class MovieCard extends Component {
 
   render() {
     const { title, poster_path, starColor} = this.props;
-    const posterUrl = `http://image.tmdb.org/t/p/w185//${poster_path}`;
+    const posterUrl = `http://image.tmdb.org/t/p/w342//${poster_path}`;
 
     return (
       <article>

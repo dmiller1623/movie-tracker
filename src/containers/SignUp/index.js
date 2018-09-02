@@ -52,11 +52,12 @@ export class SignUp extends Component {
           />
           <input
             name='password'
+            type='password'
             value={password}
             placeholder='password'
             onChange={this.handleChange}
           />
-          <button>Submit</button>
+          <button>Sign Up</button>
         </form>
       </div>
     );

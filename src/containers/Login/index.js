@@ -6,6 +6,8 @@ import { PropTypes } from 'prop-types';
 import { loginUser, populateFavorites } from '../../actions';
 import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
 
+import './styles.css';
+
 export class Login extends Component {
   constructor() {
     super();
@@ -52,11 +54,12 @@ export class Login extends Component {
           />
           <input
             name='password'
+            type='password'
             value={password}
             placeholder='password'
             onChange={this.handleChange}
           />
-          <button>Submit</button>
+          <button>Login</button>
         </form>
       </div>
     );
@@ -73,5 +76,5 @@ export default withRouter(connect(null, mapDispatchToProps)(Login));
 Login.propTypes = {
   loginUser: PropTypes.func,
   populateFavorites : PropTypes.func,
-  history: PropTypes.array
+  history: PropTypes.object
 }
