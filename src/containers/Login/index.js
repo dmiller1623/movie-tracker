@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import { loginUser, populateFavorites } from '../../actions';
 import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
@@ -66,3 +67,9 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Login));
+
+Login.propTypes = {
+  loginUser: PropTypes.func,
+  populateFavorites : PropTypes.func,
+  history: PropTypes.array
+}
