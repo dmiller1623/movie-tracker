@@ -8,7 +8,7 @@ import { signOutUser } from '../../actions';
 
 import './styles.css';
 
-class NavBar extends Component {
+export class NavBar extends Component {
   handleSignOut = () => {
     this.props.signOutUser();
     localStorage.clear();
@@ -29,11 +29,11 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   signOutUser: () => dispatch(signOutUser())
 });
 
