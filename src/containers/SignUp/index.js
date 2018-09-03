@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { signUpUser } from '../../actions';
 import { addNewUser, getUser } from '../../utilities/apiCalls/apiCalls';
+import PropTypes from 'prop-types';
 
 export class SignUp extends Component {
   constructor() {
@@ -73,5 +74,10 @@ export class SignUp extends Component {
 export const mapDispatchToProps = (dispatch) => ({
   signUpUser: (user) => dispatch(signUpUser(user))
 });
+
+SignUp.propTypes = {
+  signUpUser: PropTypes.func,
+  history: PropTypes.array
+};
 
 export default connect(null, mapDispatchToProps)(SignUp);

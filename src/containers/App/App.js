@@ -70,5 +70,7 @@ App.propTypes = {
   favorites: PropTypes.arrayOf(PropTypes.number),
   populateFavorites: PropTypes.func,
   populateMovies: PropTypes.func,
-  loginUser: PropTypes.func
+  loginUser: PropTypes.func,
+  history: PropTypes.object
+
 };

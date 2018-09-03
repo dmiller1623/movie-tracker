@@ -48,7 +48,13 @@ describe('MovieCard', () => {
     it('should call addNewFavorite and addFavorite with the correct params if toggleFavorite is called on a movie that is not already in the user favorites', () => {
       const user = {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"};
       const favorites = [0, 1, 2];
-      const expected = {"addFavorite": addFavorite, "favorites": [0, 1, 2], "movie_id": 3, "populateFavorites": populateFavorites, "poster_path": "/1hOcS0G9q5eEzJEYeWjAa376yux.jpg", "release_date": "1994-01-01", "starColor": "#ffd24d", "title": "Skulhedface", "user": {"email": "tman2272@aol.com", "id": 1, "name": "Taylor", "password": "password"}, "user_id": 1, "vote_average": 10};
+      const expected = {"addFavorite": addFavorite,
+        "favorites": [0, 1, 2],
+        "movie_id": 3,
+        "populateFavorites": populateFavorites,
+        "poster_path": "/1hOcS0G9q5eEzJEYeWjAa376yux.jpg",
+        "release_date": "1994-01-01", "starColor": "#ffd24d",
+        "title": "Skulhedface", "user": {"email": "tman2272@aol.com", "id": 1, "name": "Taylor", "password": "password"}, "user_id": 1, "vote_average": 10};
       const mockEvent = {stopPropagation: jest.fn()};
 
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
@@ -67,6 +73,12 @@ describe('MovieCard', () => {
       wrapper.find('svg').simulate('click', mockEvent);
 
       expect(spy).toHaveBeenCalled();
+    });
+
+    it('should update state when a movie is clicked', () => {
+      wrapper = shallow(<MovieCard />);
+      wrapper.find('article').simulate('click');
+      expect(wrapper.state('movieInfo')).toEqual(true);
     });
   });
 

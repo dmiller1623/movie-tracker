@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { BrowserRouter, MemoryRouter} from 'react-router-dom';
 
-import { Login } from '../Login';
 import { App, mapStateToProps, mapDispatchToProps } from './App.js';
 import { populateMovies } from '../../actions';
 
@@ -12,9 +11,9 @@ describe('App', () => {
   describe('App component', () => {
     it('should match the snapshot', () => {
       const wrapper = shallow(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>);
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>);
   
       expect(wrapper).toMatchSnapshot();
     });

@@ -7,7 +7,7 @@ import './styles.css';
 import {getMovies} from '../../utilities/apiCalls/apiCalls';
 import { addMovies } from '../../actions';
 
-class MovieList extends Component {
+export class MovieList extends Component {
 
   addResults = async () => {
     const { movies, addMovies } = this.props;
