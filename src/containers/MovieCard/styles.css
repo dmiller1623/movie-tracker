@@ -3,7 +3,8 @@ article {
   margin: .5rem; }
   article img {
     width: 285px;
-    border-radius: 10px; }
+    border-radius: 10px;
+    cursor: pointer; }
 
 svg {
   position: absolute;
@@ -24,7 +25,8 @@ svg {
   opacity: 1;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out; }
+  -webkit-transition: opacity .25s ease-in-out;
+  cursor: pointer; }
   .info p {
     margin: .5rem; }
   .info .overview {

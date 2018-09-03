@@ -6,6 +6,7 @@ article {
   img {
     width: 285px;
     border-radius: 10px;
+    cursor: pointer;
   }
 }
 
@@ -27,16 +28,17 @@ svg {
   color: $off-white;
   background-color: $blue-accent;
   text-align: left;
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  cursor: pointer;
   p {
     margin: .5rem; 
   }
   .overview {
     font-family: 'Ubuntu Condensed', sans-serif;  
   }
-  opacity: 1;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
 }
 
 .hide {
