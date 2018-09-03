@@ -8,11 +8,19 @@ import { addNewFavorite, deleteFavorite } from '../../utilities/apiCalls/apiCall
 import './styles.css';
 
 export class MovieCard extends Component {
-  toggleFavorite = async () => {
+  constructor() {
+    super();
+    this.state = {
+      movieInfo: false,
+    };
+  }
+
+  toggleFavorite = async (event) => {
     const { id, name } = this.props.user;
     const { favorites, addFavorite, populateFavorites } = this.props;
     const movie = {...this.props, user_id: id};
-    
+    event.stopPropagation();
+
     if (!name) {
       return alert('To favorite a movie, please login or sign up for a new account.');
     }
@@ -27,14 +35,24 @@ export class MovieCard extends Component {
     }
   }
 
+  toggleMovieInfo = () => {
+    this.setState({movieInfo: !this.state.movieInfo});
+  }
+
   render() {
-    const { title, poster_path, starColor} = this.props;
+    const { title, poster_path, starColor, release_date, overview } = this.props;
     const posterUrl = `http://image.tmdb.org/t/p/w342//${poster_path}`;
+    const infoDisplay = this.state.movieInfo ? '' : 'hide';
 
     return (
-      <article>
-        <svg 
-          onClick={() => this.toggleFavorite()}
+      <article onClick={this.toggleMovieInfo}>
+        <div className={'info '+ infoDisplay}>
+          <p>{title}</p>
+          <p>{release_date}</p>
+          <p className='overview'>{overview}</p>
+        </div>
+        <svg
+          onClick={this.toggleFavorite}
           viewBox='0 0 512 512' width='3.5rem'>
           <path d='m463.515 0h-415.03v512l207.515-130.554 207.515 130.554z' fill='#f14742'/>
           <path d='m388.692 162.487c-.882-2.716-3.758-5.228-8.513-5.515l-84.734-5.664-31.571-78.837c-1.742-4.433-5.021-6.392-7.876-6.392s-6.134 1.959-7.876 6.392l-31.571 78.837-84.734 5.664c-4.755.287-7.631 2.799-8.513 5.515-.882 2.715-.032 6.439 3.645 9.465l65.222 54.387-20.797 82.336c-1.197 4.61.305 8.124 2.613 9.801 2.309 1.677 6.114 2.018 10.129-.544l71.884-45.22 71.88 45.222c4.015 2.562 7.819 2.221 10.129.544 2.31-1.678 3.81-5.192 2.613-9.801l-20.797-82.336 65.221-54.387c3.679-3.028 4.529-6.753 3.646-9.467z' fill={starColor}/>
