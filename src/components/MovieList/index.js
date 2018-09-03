@@ -25,10 +25,14 @@ class MovieList extends Component {
 
     return (
       <main>
-        {displayedMovies}
-        <article className="more-btn">
-          <h4 onClick={() => this.addResults()} className="more-text">SEE MORE</h4>
-        </article>
+        <div className='movie-cards'>
+          {displayedMovies}
+        </div>
+        <button 
+          className='more-btn'
+          onClick={() => this.addResults()} >
+          View More
+        </button>
       </main>
     );
   }

@@ -1,5 +1,5 @@
 const cleanData = (data) => {
-  const shortenedResults = data.results.filter( movie => movie.poster_path).slice(0, 8);
+  const shortenedResults = data.results.filter( movie => movie.poster_path).slice(1, 13);
   return shortenedResults.map( (movie, index) => {
     return {
       movie_id: index,
