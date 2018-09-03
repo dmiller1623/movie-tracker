@@ -23,10 +23,11 @@ describe('MovieCard', () => {
     it('should return an alert if toggleFavorite is called and user is not logged in', async () => {
       const user = {};
       const favorites = [0, 1, 2, 3];
+      const mockEvent = {stopPropagation: jest.fn()};
 
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
 
-      wrapper.instance().toggleFavorite();
+      wrapper.instance().toggleFavorite(mockEvent);
 
       expect(deleteFavorite).not.toHaveBeenCalled();
 
@@ -35,10 +36,11 @@ describe('MovieCard', () => {
     it('should call deleteFavorite and populateFavorite with the correct params if toggleFavorite is called on a movie that is already in the users favorites', () => {
       const user = {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"};
       const favorites = [0, 1, 2, 3];
+      const mockEvent = {stopPropagation: jest.fn()};
 
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
 
-      wrapper.instance().toggleFavorite();
+      wrapper.instance().toggleFavorite(mockEvent);
 
       expect(deleteFavorite).toHaveBeenCalledWith(1, 3);
     });
@@ -47,9 +49,10 @@ describe('MovieCard', () => {
       const user = {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"};
       const favorites = [0, 1, 2];
       const expected = {"addFavorite": addFavorite, "favorites": [0, 1, 2], "movie_id": 3, "populateFavorites": populateFavorites, "poster_path": "/1hOcS0G9q5eEzJEYeWjAa376yux.jpg", "release_date": "1994-01-01", "starColor": "#ffd24d", "title": "Skulhedface", "user": {"email": "tman2272@aol.com", "id": 1, "name": "Taylor", "password": "password"}, "user_id": 1, "vote_average": 10};
+      const mockEvent = {stopPropagation: jest.fn()};
 
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
-      wrapper.instance().toggleFavorite();
+      wrapper.instance().toggleFavorite(mockEvent);
 
       expect(addNewFavorite).toHaveBeenCalledWith(expected);
     });
@@ -57,10 +60,11 @@ describe('MovieCard', () => {
     it('should call toggleFavorite when svg is clicked', () => {
       const user = {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"};
       const favorites = [0, 1, 2];
+      const mockEvent = {stopPropagation: jest.fn()};
       wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
 
       const spy = jest.spyOn(wrapper.instance(), 'toggleFavorite');
-      wrapper.find('svg').simulate('click');
+      wrapper.find('svg').simulate('click', mockEvent);
 
       expect(spy).toHaveBeenCalled();
     });
