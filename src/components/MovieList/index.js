@@ -10,14 +10,16 @@ import { addMovies } from '../../actions';
 class MovieList extends Component {
 
   addResults = async () => {
-    const page = Math.floor(this.props.movies.length) / 8;
+    const { movies, addMovies } = this.props;
+    const page = movies.length / 8;
     const moreMovies = await getMovies(page + 1);
-    this.props.addMovies(moreMovies);
+    addMovies(moreMovies);
   }
   
   render() {
-    const displayedMovies = this.props.movies.map( (movie, index) => {
-      const starColor = this.props.favorites.includes(movie.movie_id) ? '#ffd24d' : '#f2f2f2';
+    const { movies, favorites } = this.props;
+    const displayedMovies = movies.map( (movie, index) => {
+      const starColor = favorites.includes(movie.movie_id) ? '#ffd24d' : '#f2f2f2';
       return <MovieCard {...movie} key={index} starColor={starColor}/>;
     });
 
@@ -31,23 +33,7 @@ class MovieList extends Component {
     );
   }
 
-
-<<<<<<< HEAD
-const MovieList = ({ movies, favorites = [] }) => {
-  const displayedMovies = movies.map( (movie, index) => {
-    const starColor = favorites.includes(movie.movie_id) ? '#ffd24d' : '#f2f2f2';
-    return <MovieCard {...movie} key={index} starColor={starColor}/>;
-  });
-
-  return (
-    <main>
-      {displayedMovies}
-    </main>
-  );
-};
-=======
 }
->>>>>>> Add feat to see more results
 
 export const mapDispatchToProps = (dispatch) => ({
   addMovies: (moreMovies) => dispatch(addMovies(moreMovies))
@@ -56,7 +42,9 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(null, mapDispatchToProps)(MovieList);
 
 
+const { arrayOf, object, number, func } = PropTypes;
 MovieList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
-  favorites: PropTypes.arrayOf(PropTypes.number)
+  movies: arrayOf(object),
+  favorites: arrayOf(number),
+  addMovies: func
 };
