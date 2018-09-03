@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import {  SignUp, mapDispatchToProps } from '../SignUp';
 import { signUpUser } from '../../actions';
 
-
 describe('SignUp', () => {
   let wrapper;
 
@@ -49,6 +48,29 @@ describe('SignUp', () => {
     });
 
     it('should call submitSignUp on form submit', async () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      const mockSignUp = jest.fn();
+      const history = [];
+      wrapper = shallow(<SignUp signUpUser={mockSignUp} history={history}/>);
+      wrapper.setState({ name: 'den', email: 'dmill@aol.com', password: 'password'})
+      window.fetch = jest.fn().mockImplementation(() => 
+      Promise.resolve({
+        ok: true, 
+        json: () => Promise.resolve({ 
+          name:'Dennis', 
+          email:'dm@aol.com', 
+          password:'password' })
+      }));     
+      await wrapper.instance().submitSignUp(mockEvent);
+      expect(mockSignUp).toHaveBeenCalled();
+    });
+
+    it('should not call submitSignUp if an input is missing a value', async () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      const mockSignUp = jest.fn();
+      const history = [];
+      wrapper = shallow(<SignUp signUpUser={mockSignUp} history={history}/>);
+      wrapper.setState({ name: 'den', email: 'dmill@aol.com', password: ''})
       window.fetch = jest.fn().mockImplementation(() => 
       Promise.resolve({
         ok: true, 
@@ -57,13 +79,9 @@ describe('SignUp', () => {
           email:'dm@aol.com', 
           password:'password' })
       }));
-      const mockEvent = { preventDefault: jest.fn() };
-      const mockSignUp = jest.fn();
-      const history = [];
-      wrapper = shallow(<SignUp signUpUser={mockSignUp} history={history}/>);
       await wrapper.instance().submitSignUp(mockEvent);
-      expect(mockSignUp).toHaveBeenCalled();
-    });
+      expect(mockSignUp).not.toHaveBeenCalled();
+    })
   });
 
   describe('matchdispatchtoprops', () => {
@@ -83,5 +101,4 @@ describe('SignUp', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
-
 });
