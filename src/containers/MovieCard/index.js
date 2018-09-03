@@ -19,9 +19,9 @@ export class MovieCard extends Component {
     const { id, name } = this.props.user;
     const { favorites, addFavorite, populateFavorites } = this.props;
     const movie = {...this.props, user_id: id};
-    
+    event.stopPropagation();
+
     if (!name) {
-      event.stopPropagation();
       return alert('To favorite a movie, please login or sign up for a new account.');
     }
 
@@ -33,7 +33,6 @@ export class MovieCard extends Component {
       await addNewFavorite(movie);
       addFavorite(movie.movie_id);
     }
-    event.stopPropagation();
   }
 
   toggleMovieInfo = () => {
