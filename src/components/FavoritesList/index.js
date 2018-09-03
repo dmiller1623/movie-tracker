@@ -1,6 +1,8 @@
 import React from 'react';
 import MovieCard from '../../containers/MovieCard';
 
+import './styles.css';
+
 const FavoritesList = ({ movies, favorites }) => {
   const displayedMovies = favorites.map( (favorite, index) => {
     const movie = movies.find( movie => movie.movie_id === favorite);
