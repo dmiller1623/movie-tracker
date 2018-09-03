@@ -15,12 +15,13 @@ export class MovieCard extends Component {
     };
   }
 
-  toggleFavorite = async () => {
+  toggleFavorite = async (event) => {
     const { id, name } = this.props.user;
     const { favorites, addFavorite, populateFavorites } = this.props;
     const movie = {...this.props, user_id: id};
     
     if (!name) {
+      event.stopPropagation();
       return alert('To favorite a movie, please login or sign up for a new account.');
     }
 
@@ -32,6 +33,7 @@ export class MovieCard extends Component {
       await addNewFavorite(movie);
       addFavorite(movie.movie_id);
     }
+    event.stopPropagation();
   }
 
   toggleMovieInfo = () => {
@@ -39,12 +41,18 @@ export class MovieCard extends Component {
   }
 
   render() {
-    const { title, poster_path, starColor} = this.props;
+    const { title, poster_path, starColor, release_date, overview } = this.props;
     const posterUrl = `http://image.tmdb.org/t/p/w342//${poster_path}`;
+    const infoDisplay = this.state.movieInfo ? '' : 'hide';
 
     return (
       <article onClick={this.toggleMovieInfo}>
-        <svg 
+        <div className={'info '+ infoDisplay}>
+          <p>{title}</p>
+          <p>{release_date}</p>
+          <p className='overview'>{overview}</p>
+        </div>
+        <svg
           onClick={this.toggleFavorite}
           viewBox='0 0 512 512' width='3.5rem'>
           <path d='m463.515 0h-415.03v512l207.515-130.554 207.515 130.554z' fill='#f14742'/>
