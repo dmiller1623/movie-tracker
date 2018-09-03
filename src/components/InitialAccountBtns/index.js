@@ -7,7 +7,7 @@ export const InitialAccountBtns = () => {
   return (
     <div>
       <NavLink activeClassName='selected' className='initialBtns' to='/login'>
-       Login
+        Login
       </NavLink>
       <span> | </span>
       <NavLink activeClassName='selected' className='initialBtns' to='/signup'>

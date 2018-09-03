@@ -9,16 +9,16 @@ const UserAccountBtns = ({ name, handleSignOut }) => {
     <div className='userBtns'>
       <h3>Hi, {name}!</h3>
       <div>
-      <NavLink 
-        activeClassName='selected' 
-        className='favoritesBtn' 
-        to='/favorites'>
-        View Favorites
-      </NavLink>
-      <span> | </span>
-      <button onClick={() => handleSignOut()}>
-        Sign Out
-      </button>
+        <NavLink 
+          activeClassName='selected' 
+          className='favoritesBtn' 
+          to='/favorites'>
+          View Favorites
+        </NavLink>
+        <span> | </span>
+        <button onClick={() => handleSignOut()}>
+          Sign Out
+        </button>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { InitialAccountBtns } from '../../components/InitialAccountBtns';
 import UserAccountBtns from '../../components/UserAccountBtns';
 import { signOutUser } from '../../actions';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
@@ -36,5 +37,11 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   signOutUser: () => dispatch(signOutUser())
 });
+
+NavBar.propTypes = {
+  signOutUser: PropTypes.func,
+  user: PropTypes.object,
+  history: PropTypes.object
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

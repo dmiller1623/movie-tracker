@@ -4,6 +4,26 @@ exports[`MovieList should match the snapshot with multiple movies 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MovieList
+    favorites={
+        Array [
+            Object {
+              "movie_id": 0,
+              "overview": "test1",
+              "poster_path": "test1",
+              "release_date": 2008,
+              "title": "test1",
+              "vote_average": 1,
+            },
+            Object {
+              "movie_id": 1,
+              "overview": "test2",
+              "poster_path": "test2",
+              "release_date": 2008,
+              "title": "test2",
+              "vote_average": 1,
+            },
+          ]
+    }
     movies={
         Array [
             Object {
@@ -38,61 +58,116 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Connect(MovieCard)
-          movie_id={0}
-          overview="test1"
-          poster_path="test1"
-          release_date={2008}
-          starColor="#f2f2f2"
-          title="test1"
-          vote_average={1}
-/>,
-        <Connect(MovieCard)
-          movie_id={1}
-          overview="test2"
-          poster_path="test2"
-          release_date={2008}
-          starColor="#f2f2f2"
-          title="test2"
-          vote_average={1}
-/>,
+        <div
+          className="movie-cards"
+>
+          <Connect(MovieCard)
+                    movie_id={0}
+                    overview="test1"
+                    poster_path="test1"
+                    release_date={2008}
+                    starColor="#f2f2f2"
+                    title="test1"
+                    vote_average={1}
+          />
+          <Connect(MovieCard)
+                    movie_id={1}
+                    overview="test2"
+                    poster_path="test2"
+                    release_date={2008}
+                    starColor="#f2f2f2"
+                    title="test2"
+                    vote_average={1}
+          />
+</div>,
+        <button
+          className="more-btn"
+          onClick={[Function]}
+>
+          View More
+</button>,
       ],
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": "0",
-        "nodeType": "class",
+        "key": undefined,
+        "nodeType": "host",
         "props": Object {
-          "movie_id": 0,
-          "overview": "test1",
-          "poster_path": "test1",
-          "release_date": 2008,
-          "starColor": "#f2f2f2",
-          "title": "test1",
-          "vote_average": 1,
+          "children": Array [
+            <Connect(MovieCard)
+              movie_id={0}
+              overview="test1"
+              poster_path="test1"
+              release_date={2008}
+              starColor="#f2f2f2"
+              title="test1"
+              vote_average={1}
+/>,
+            <Connect(MovieCard)
+              movie_id={1}
+              overview="test2"
+              poster_path="test2"
+              release_date={2008}
+              starColor="#f2f2f2"
+              title="test2"
+              vote_average={1}
+/>,
+          ],
+          "className": "movie-cards",
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "class",
+            "props": Object {
+              "movie_id": 0,
+              "overview": "test1",
+              "poster_path": "test1",
+              "release_date": 2008,
+              "starColor": "#f2f2f2",
+              "title": "test1",
+              "vote_average": 1,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "class",
+            "props": Object {
+              "movie_id": 1,
+              "overview": "test2",
+              "poster_path": "test2",
+              "release_date": 2008,
+              "starColor": "#f2f2f2",
+              "title": "test2",
+              "vote_average": 1,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
       },
       Object {
         "instance": null,
-        "key": "1",
-        "nodeType": "class",
+        "key": undefined,
+        "nodeType": "host",
         "props": Object {
-          "movie_id": 1,
-          "overview": "test2",
-          "poster_path": "test2",
-          "release_date": 2008,
-          "starColor": "#f2f2f2",
-          "title": "test2",
-          "vote_average": 1,
+          "children": "View More",
+          "className": "more-btn",
+          "onClick": [Function],
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": "View More",
+        "type": "button",
       },
     ],
     "type": "main",
@@ -104,61 +179,116 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Connect(MovieCard)
-            movie_id={0}
-            overview="test1"
-            poster_path="test1"
-            release_date={2008}
-            starColor="#f2f2f2"
-            title="test1"
-            vote_average={1}
-/>,
-          <Connect(MovieCard)
-            movie_id={1}
-            overview="test2"
-            poster_path="test2"
-            release_date={2008}
-            starColor="#f2f2f2"
-            title="test2"
-            vote_average={1}
-/>,
+          <div
+            className="movie-cards"
+>
+            <Connect(MovieCard)
+                        movie_id={0}
+                        overview="test1"
+                        poster_path="test1"
+                        release_date={2008}
+                        starColor="#f2f2f2"
+                        title="test1"
+                        vote_average={1}
+            />
+            <Connect(MovieCard)
+                        movie_id={1}
+                        overview="test2"
+                        poster_path="test2"
+                        release_date={2008}
+                        starColor="#f2f2f2"
+                        title="test2"
+                        vote_average={1}
+            />
+</div>,
+          <button
+            className="more-btn"
+            onClick={[Function]}
+>
+            View More
+</button>,
         ],
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": "0",
-          "nodeType": "class",
+          "key": undefined,
+          "nodeType": "host",
           "props": Object {
-            "movie_id": 0,
-            "overview": "test1",
-            "poster_path": "test1",
-            "release_date": 2008,
-            "starColor": "#f2f2f2",
-            "title": "test1",
-            "vote_average": 1,
+            "children": Array [
+              <Connect(MovieCard)
+                movie_id={0}
+                overview="test1"
+                poster_path="test1"
+                release_date={2008}
+                starColor="#f2f2f2"
+                title="test1"
+                vote_average={1}
+/>,
+              <Connect(MovieCard)
+                movie_id={1}
+                overview="test2"
+                poster_path="test2"
+                release_date={2008}
+                starColor="#f2f2f2"
+                title="test2"
+                vote_average={1}
+/>,
+            ],
+            "className": "movie-cards",
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "class",
+              "props": Object {
+                "movie_id": 0,
+                "overview": "test1",
+                "poster_path": "test1",
+                "release_date": 2008,
+                "starColor": "#f2f2f2",
+                "title": "test1",
+                "vote_average": 1,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "class",
+              "props": Object {
+                "movie_id": 1,
+                "overview": "test2",
+                "poster_path": "test2",
+                "release_date": 2008,
+                "starColor": "#f2f2f2",
+                "title": "test2",
+                "vote_average": 1,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
         },
         Object {
           "instance": null,
-          "key": "1",
-          "nodeType": "class",
+          "key": undefined,
+          "nodeType": "host",
           "props": Object {
-            "movie_id": 1,
-            "overview": "test2",
-            "poster_path": "test2",
-            "release_date": 2008,
-            "starColor": "#f2f2f2",
-            "title": "test2",
-            "vote_average": 1,
+            "children": "View More",
+            "className": "more-btn",
+            "onClick": [Function],
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": "View More",
+          "type": "button",
         },
       ],
       "type": "main",
@@ -186,12 +316,24 @@ ShallowWrapper {
 }
 `;
 
-exports[`MovieList should match the snapshot with no movies 1`] = `"<main></main>"`;
+exports[`MovieList should match the snapshot with no movies 1`] = `"<main><div class=\\"movie-cards\\"></div><button class=\\"more-btn\\">View More</button></main>"`;
 
 exports[`MovieList should match the snapshot with one movie 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MovieList
+    favorites={
+        Array [
+            Object {
+              "movie_id": 0,
+              "overview": "test",
+              "poster_path": "test",
+              "release_date": 2008,
+              "title": "test",
+              "vote_average": 1,
+            },
+          ]
+    }
     movies={
         Array [
             Object {
@@ -218,35 +360,81 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Connect(MovieCard)
-          movie_id={0}
-          overview="test"
-          poster_path="test"
-          release_date={2008}
-          starColor="#f2f2f2"
-          title="test"
-          vote_average={1}
-/>,
+        <div
+          className="movie-cards"
+>
+          <Connect(MovieCard)
+                    movie_id={0}
+                    overview="test"
+                    poster_path="test"
+                    release_date={2008}
+                    starColor="#f2f2f2"
+                    title="test"
+                    vote_average={1}
+          />
+</div>,
+        <button
+          className="more-btn"
+          onClick={[Function]}
+>
+          View More
+</button>,
       ],
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": "0",
-        "nodeType": "class",
+        "key": undefined,
+        "nodeType": "host",
         "props": Object {
-          "movie_id": 0,
-          "overview": "test",
-          "poster_path": "test",
-          "release_date": 2008,
-          "starColor": "#f2f2f2",
-          "title": "test",
-          "vote_average": 1,
+          "children": Array [
+            <Connect(MovieCard)
+              movie_id={0}
+              overview="test"
+              poster_path="test"
+              release_date={2008}
+              starColor="#f2f2f2"
+              title="test"
+              vote_average={1}
+/>,
+          ],
+          "className": "movie-cards",
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "class",
+            "props": Object {
+              "movie_id": 0,
+              "overview": "test",
+              "poster_path": "test",
+              "release_date": 2008,
+              "starColor": "#f2f2f2",
+              "title": "test",
+              "vote_average": 1,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "View More",
+          "className": "more-btn",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "View More",
+        "type": "button",
       },
     ],
     "type": "main",
@@ -258,35 +446,81 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Connect(MovieCard)
-            movie_id={0}
-            overview="test"
-            poster_path="test"
-            release_date={2008}
-            starColor="#f2f2f2"
-            title="test"
-            vote_average={1}
-/>,
+          <div
+            className="movie-cards"
+>
+            <Connect(MovieCard)
+                        movie_id={0}
+                        overview="test"
+                        poster_path="test"
+                        release_date={2008}
+                        starColor="#f2f2f2"
+                        title="test"
+                        vote_average={1}
+            />
+</div>,
+          <button
+            className="more-btn"
+            onClick={[Function]}
+>
+            View More
+</button>,
         ],
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": "0",
-          "nodeType": "class",
+          "key": undefined,
+          "nodeType": "host",
           "props": Object {
-            "movie_id": 0,
-            "overview": "test",
-            "poster_path": "test",
-            "release_date": 2008,
-            "starColor": "#f2f2f2",
-            "title": "test",
-            "vote_average": 1,
+            "children": Array [
+              <Connect(MovieCard)
+                movie_id={0}
+                overview="test"
+                poster_path="test"
+                release_date={2008}
+                starColor="#f2f2f2"
+                title="test"
+                vote_average={1}
+/>,
+            ],
+            "className": "movie-cards",
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "class",
+              "props": Object {
+                "movie_id": 0,
+                "overview": "test",
+                "poster_path": "test",
+                "release_date": 2008,
+                "starColor": "#f2f2f2",
+                "title": "test",
+                "vote_average": 1,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "View More",
+            "className": "more-btn",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "View More",
+          "type": "button",
         },
       ],
       "type": "main",

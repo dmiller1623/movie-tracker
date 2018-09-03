@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieCard from '../../containers/MovieCard';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
@@ -16,4 +17,8 @@ const FavoritesList = ({ movies, favorites }) => {
   );
 };
 
+FavoritesList.propTypes = {
+  movies: PropTypes.array,
+  favorites: PropTypes.array
+};
 export default FavoritesList;

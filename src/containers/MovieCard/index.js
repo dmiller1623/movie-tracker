@@ -11,7 +11,7 @@ export class MovieCard extends Component {
   constructor() {
     super();
     this.state = {
-      movieInfo: false,
+      movieInfo: false
     };
   }
 
@@ -85,6 +85,8 @@ MovieCard.propTypes = {
     id: number,
     name: string
   }),
+  release_date: string,
+  overview: string,
   addFavorite: func,
   populateFavorites: func
 };

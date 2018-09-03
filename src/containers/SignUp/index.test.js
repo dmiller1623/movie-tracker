@@ -52,15 +52,15 @@ describe('SignUp', () => {
       const mockSignUp = jest.fn();
       const history = [];
       wrapper = shallow(<SignUp signUpUser={mockSignUp} history={history}/>);
-      wrapper.setState({ name: 'den', email: 'dmill@aol.com', password: 'password'})
+      wrapper.setState({ name: 'den', email: 'dmill@aol.com', password: 'password'});
       window.fetch = jest.fn().mockImplementation(() => 
-      Promise.resolve({
-        ok: true, 
-        json: () => Promise.resolve({ 
-          name:'Dennis', 
-          email:'dm@aol.com', 
-          password:'password' })
-      }));     
+        Promise.resolve({
+          ok: true, 
+          json: () => Promise.resolve({ 
+            name:'Dennis', 
+            email:'dm@aol.com', 
+            password:'password' })
+        }));     
       await wrapper.instance().submitSignUp(mockEvent);
       expect(mockSignUp).toHaveBeenCalled();
     });
@@ -70,18 +70,18 @@ describe('SignUp', () => {
       const mockSignUp = jest.fn();
       const history = [];
       wrapper = shallow(<SignUp signUpUser={mockSignUp} history={history}/>);
-      wrapper.setState({ name: 'den', email: 'dmill@aol.com', password: ''})
+      wrapper.setState({ name: 'den', email: 'dmill@aol.com', password: ''});
       window.fetch = jest.fn().mockImplementation(() => 
-      Promise.resolve({
-        ok: true, 
-        json: () => Promise.resolve({ 
-          name:'Dennis', 
-          email:'dm@aol.com', 
-          password:'password' })
-      }));
+        Promise.resolve({
+          ok: true, 
+          json: () => Promise.resolve({ 
+            name:'Dennis', 
+            email:'dm@aol.com', 
+            password:'password' })
+        }));
       await wrapper.instance().submitSignUp(mockEvent);
       expect(mockSignUp).not.toHaveBeenCalled();
-    })
+    });
   });
 
   describe('matchdispatchtoprops', () => {
