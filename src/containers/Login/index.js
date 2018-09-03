@@ -75,8 +75,9 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export default withRouter(connect(null, mapDispatchToProps)(Login));
 
+const { func, array } = PropTypes;
 Login.propTypes = {
-  loginUser: PropTypes.func,
-  populateFavorites : PropTypes.func,
-  history: PropTypes.object
+  loginUser: func,
+  populateFavorites : func,
+  history: array
 };
