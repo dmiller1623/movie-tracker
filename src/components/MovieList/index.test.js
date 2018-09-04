@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieList, mapDispatchToProps } from '../MovieList';
 import { addMovies } from '../../actions';
+import { mockMovieDataFromFetch } from '../../utilities/apiCalls/mockData';
+
 
 describe('MovieList', () => {
 
@@ -74,7 +76,7 @@ describe('MovieList', () => {
     expect(wrapper.find('path').prop('fill')).toEqual('#ffd24d');
   });
 
-  it('should call addresults when button is clicked', async () => {
+  it('should call addMovies when the svg button is clicked', async () => {
     const movies = [{
       movie_id: 0,
       title: 'test',
@@ -89,6 +91,22 @@ describe('MovieList', () => {
     let wrapper = shallow(<MovieList movies={movies} favorites={favorites} addMovies={mockAddMovies}/>);
     await wrapper.instance().addResults();
     await expect(mockAddMovies).toHaveBeenCalled();
+  });
+
+  it('should call add results on the button click', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve(mockMovieDataFromFetch)
+    }));
+    const mockAddMovies = jest.fn();
+    const movies = [];
+    const favorites = [0, 1, 2];
+    let wrapper = shallow(<MovieList movies ={movies} favorites={favorites} addMovies={mockAddMovies}/> );
+
+    const spy = jest.spyOn(wrapper.instance(), 'addResults');
+    wrapper.find('.more-btn').simulate('click');
+
+    expect(spy).toHaveBeenCalled();
   });
 
   describe('matchdispatchtoprops', () => {

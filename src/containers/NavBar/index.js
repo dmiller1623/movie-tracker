@@ -7,7 +7,7 @@ import UserAccountBtns from '../../components/UserAccountBtns';
 import { signOutUser } from '../../actions';
 import PropTypes from 'prop-types';
 
-import './styles.css';
+import './styles.scss';
 
 export class NavBar extends Component {
   handleSignOut = () => {

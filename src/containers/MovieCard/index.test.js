@@ -63,18 +63,6 @@ describe('MovieCard', () => {
       expect(addNewFavorite).toHaveBeenCalledWith(expected);
     });
 
-    it('should call toggleFavorite when svg is clicked', () => {
-      const user = {id: 1, name: "Taylor", password: "password", email: "tman2272@aol.com"};
-      const favorites = [0, 1, 2];
-      const mockEvent = {stopPropagation: jest.fn()};
-      wrapper = shallow(<MovieCard {...movie} starColor={starColor} user={user} favorites={favorites} addFavorite={addFavorite} populateFavorites={populateFavorites}/> );
-
-      const spy = jest.spyOn(wrapper.instance(), 'toggleFavorite');
-      wrapper.find('svg').simulate('click', mockEvent);
-
-      expect(spy).toHaveBeenCalled();
-    });
-
     it('should update state when a movie is clicked', () => {
       wrapper = shallow(<MovieCard />);
       wrapper.find('article').simulate('click');
