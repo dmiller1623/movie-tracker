@@ -1,18 +1,6 @@
 import apiKey from '../../apiKey.js';
 import cleanData from '../helper/helper.js';
 
-export const getMovies = async (page = 1) => {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=878&language=en-US&sort_by=revenue.asc&include_adult=false&include_video=false&page=${page}`;
-  try {
-    const response = await fetch(url);
-    const movieData = await response.json();
-    const unresolvedMovies = await cleanData(movieData);
-    return Promise.all(unresolvedMovies);
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
 export const getUser = async (email, password) => {
   try {
     const response = await fetch('http://localhost:3000/api/users', {
@@ -37,14 +25,18 @@ export const getUser = async (email, password) => {
   }
 };
 
-export const getFavorites = async (userId) => {
+export const getFavorites = async userId => {
   try {
-    const response = await fetch(`http://localhost:3000/api/users/${userId}/favorites`);
+    const response = await fetch(
+      `http://localhost:3000/api/users/${userId}/favorites`
+    );
     if (response.status !== 200) {
       return [];
     } else {
       const favorites = await response.json();
-      const favoriteMovieIds = favorites.data.map( favorite => favorite.movie_id );
+      const favoriteMovieIds = favorites.data.map(
+        favorite => favorite.movie_id
+      );
       return favoriteMovieIds;
     }
   } catch (error) {
@@ -60,17 +52,19 @@ export const addNewUser = async (name, email, password) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name, 
+        name,
         email,
         password
       })
     });
     if (response.status !== 200) {
-      alert('User already exists, please try another email or login to an account');
+      alert(
+        'User already exists, please try another email or login to an account'
+      );
       return {};
     } else {
       return await response.json();
-    }  
+    }
   } catch (error) {
     throw new Error(error.message);
   }
@@ -83,23 +77,27 @@ export const addNewFavorite = async ({
   poster_path,
   release_date,
   vote_average,
-  overview}) => {
+  overview
+}) => {
   try {
-    const response = await fetch('http://localhost:3000/api/users/favorites/new', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        movie_id,
-        user_id,
-        title,
-        poster_path,
-        release_date,
-        vote_average,
-        overview
-      })
-    });
+    const response = await fetch(
+      'http://localhost:3000/api/users/favorites/new',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          movie_id,
+          user_id,
+          title,
+          poster_path,
+          release_date,
+          vote_average,
+          overview
+        })
+      }
+    );
     return response.json();
   } catch (error) {
     throw new Error(error.message);
@@ -108,9 +106,12 @@ export const addNewFavorite = async ({
 
 export const deleteFavorite = async (userId, movieId) => {
   try {
-    await fetch(`http://localhost:3000/api/users/${userId}/favorites/${movieId}`, {
-      method: 'DELETE'
-    });
+    await fetch(
+      `http://localhost:3000/api/users/${userId}/favorites/${movieId}`,
+      {
+        method: 'DELETE'
+      }
+    );
   } catch (error) {
     throw new Error(error.message);
   }

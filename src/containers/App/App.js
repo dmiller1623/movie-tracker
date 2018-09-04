@@ -10,23 +10,24 @@ import NavBar from '../../containers/NavBar';
 
 import FavoritesList from '../../components/FavoritesList';
 import { loginUser, populateFavorites, populateMovies } from '../../actions';
-import { getFavorites, getMovies } from '../../utilities/apiCalls/apiCalls';
+import { getFavorites } from '../../utilities/apiCalls/apiCalls';
+
+import { getMovies } from '../../thunks/getMovies';
 
 import './App.css';
 
 export class App extends Component {
-  
   componentDidMount = async () => {
-    const movies = await getMovies();
+    const movies = await this.props.getMovies();
     this.props.populateMovies(movies);
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem('user');
     if (storedUser) {
       var user = JSON.parse(storedUser);
       this.props.loginUser(user);
       const favorites = await getFavorites(user.id);
       this.props.populateFavorites(favorites);
     }
-  }
+  };
 
   render() {
     const { movies, favorites } = this.props;
@@ -34,19 +35,26 @@ export class App extends Component {
     return (
       <div className="App">
         <header>
-          <img 
-            className='logo'
+          <img
+            className="logo"
             onClick={() => this.props.history.push('/')}
             src={require('../../assets/shitty-logo.png')}
-            alt='sh**ty sci-fi' />    
+            alt="sh**ty sci-fi"
+          />
           <NavBar />
         </header>
-        <Route exact path = '/login' component={Login} />
-        <Route exact path = '/signup' component={SignUp} />
-        <Route exact path = '/' render={() => 
-          <MovieList movies={movies} favorites={favorites} /> } />
-        <Route exact path = '/favorites' render={() => 
-          <FavoritesList movies={movies} favorites={favorites} />} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route
+          exact
+          path="/"
+          render={() => <MovieList movies={movies} favorites={favorites} />}
+        />
+        <Route
+          exact
+          path="/favorites"
+          render={() => <FavoritesList movies={movies} favorites={favorites} />}
+        />
       </div>
     );
   }
@@ -57,13 +65,19 @@ export const mapStateToProps = state => ({
   favorites: state.favorites
 });
 
-export const mapDispatchToProps = (dispatch) => ({
-  populateMovies: (movies) => dispatch(populateMovies(movies)),
+export const mapDispatchToProps = dispatch => ({
+  populateMovies: movies => dispatch(populateMovies(movies)),
   loginUser: (email, password) => dispatch(loginUser(email, password)),
-  populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
+  populateFavorites: favorites => dispatch(populateFavorites(favorites)),
+  getMovies: page => dispatch(getMovies(page))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
 
 App.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object),
@@ -72,5 +86,4 @@ App.propTypes = {
   populateMovies: PropTypes.func,
   loginUser: PropTypes.func,
   history: PropTypes.object
-
 };
