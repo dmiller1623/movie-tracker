@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { signUpUser } from '../../actions';
-import { addNewUser, getUser } from '../../utilities/apiCalls/apiCalls';
+import { addNewUser } from '../../utilities/apiCalls/apiCalls';
 import PropTypes from 'prop-types';
+import { getUser } from '../../thunks/getUser';
+
 
 export class SignUp extends Component {
   constructor() {
@@ -27,7 +29,7 @@ export class SignUp extends Component {
       const cleanEmail = email.trim().toLowerCase();
       const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
       await addNewUser(capitalName, cleanEmail, password);
-      const newUser = await getUser(cleanEmail, password);
+      const newUser = await this.props.getUser(cleanEmail, password);
       this.props.signUpUser(newUser);
       this.props.history.push('/');
     } else {
@@ -72,7 +74,8 @@ export class SignUp extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  signUpUser: (user) => dispatch(signUpUser(user))
+  signUpUser: (user) => dispatch(signUpUser(user)),
+  getUser: (email, password) => dispatch(getUser(email, password))
 });
 
 SignUp.propTypes = {

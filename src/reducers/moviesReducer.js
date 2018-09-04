@@ -8,3 +8,12 @@ export const moviesReducer = (state = [], action) => {
       return state;
   }
 };
+
+export const moviesLoading = (state = false, action) => {
+  switch (action.type) {
+    case 'MOVIES_LOADING':
+      return action.moviesLoading;
+    default:
+      return state;
+  }
+};

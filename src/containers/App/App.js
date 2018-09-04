@@ -18,8 +18,7 @@ import './App.css';
 
 export class App extends Component {
   componentDidMount = async () => {
-    const movies = await this.props.getMovies();
-    this.props.populateMovies(movies);
+    this.props.getMovies();
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       var user = JSON.parse(storedUser);

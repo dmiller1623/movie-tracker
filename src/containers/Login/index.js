@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 import { loginUser, populateFavorites } from '../../actions';
-import { getUser, getFavorites } from '../../utilities/apiCalls/apiCalls';
+import { getFavorites } from '../../utilities/apiCalls/apiCalls';
+import { getUser } from '../../thunks/getUser';
 
 import './styles.css';
 
@@ -27,7 +28,7 @@ export class Login extends Component {
     const { email, password } = this.state;
     if (email && password) {
       const cleanEmail = email.trim().toLowerCase();
-      const user = await getUser(cleanEmail, password);
+      const user = await this.props.getUser(cleanEmail, password);
       this.props.loginUser(user);
       const userString = JSON.stringify(user);
       localStorage.setItem('user', userString);
@@ -70,7 +71,8 @@ export class Login extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   loginUser: (email, password) => dispatch(loginUser(email, password)),
-  populateFavorites: (favorites) => dispatch(populateFavorites(favorites))
+  populateFavorites: (favorites) => dispatch(populateFavorites(favorites)),
+  getUser: (email, password) => dispatch(getUser(email, password))
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Login));

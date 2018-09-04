@@ -3,6 +3,11 @@ export const populateMovies = movies => ({
   movies
 });
 
+export const moviesLoading = bool => ({
+  type: 'MOVIES_LOADING',
+  moviesLoading: bool
+});
+
 export const addMovies = movies => ({
   type: 'ADD_MOVIES',
   movies
