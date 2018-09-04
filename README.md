@@ -14,8 +14,8 @@ Project that allows users to sign in and save their favorite movies. Made using 
 ## Extensions
 
 * User stays signed in after refreshing the page.
-* A user can click and view any individual movie.
-* A user can view additional movies by clicking 'View more' button.
+* User can click and view any individual movie.
+* User can view additional movies by clicking 'View more' button.
 
 ## Final Result
 ![initial layout](src/assets/initial_layout.gif) 
