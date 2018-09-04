@@ -45,10 +45,8 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export default connect(null, mapDispatchToProps)(MovieList);
 
-
-const { arrayOf, object, number, func } = PropTypes;
 MovieList.propTypes = {
-  movies: arrayOf(object),
-  favorites: arrayOf(number),
-  addMovies: func
+  movies: PropTypes.arrayOf(PropTypes.object),
+  favorites: PropTypes.array,
+  addMovies: PropTypes.func
 };

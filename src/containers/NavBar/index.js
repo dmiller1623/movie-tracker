@@ -41,7 +41,7 @@ export const mapDispatchToProps = (dispatch) => ({
 NavBar.propTypes = {
   signOutUser: PropTypes.func,
   user: PropTypes.object,
-  history: PropTypes.object
+  history: PropTypes.array
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
