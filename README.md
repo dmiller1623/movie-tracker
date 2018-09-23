@@ -17,6 +17,18 @@ Project that allows users to sign in and save their favorite movies. Made using 
 * User can click and view any individual movie.
 * User can view additional movies by clicking 'View more' button.
 
+## Set Up
+
+Clone down and follow instructions for setting up [this backend](https://github.com/turingschool-examples/movie-tracker)
+
+Clone down this repo making sure it is next to (not inside) the backend directory
+
+Run `npm install` from the root directory
+
+Run `npm start` and visit localhost:3001 in your browser
+
+You can run tests with `npm test`
+
 ## Final Result
 ![initial layout](src/assets/initial_layout.gif) 
 
